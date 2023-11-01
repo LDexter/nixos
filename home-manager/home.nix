@@ -105,6 +105,9 @@
 
     # Required for GPG
     pinentry-qt
+
+    # CHOO-CHOOOOOO!!
+    sl
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -234,4 +237,7 @@
 
   # Multiplexing is kinda nifty
   programs.tmux.enable = true;
+
+  # Best software in existence
+  programs.thefuck.enable = true;
 }
