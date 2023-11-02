@@ -108,6 +108,9 @@
 
     # CHOO-CHOOOOOO!!
     sl
+
+    # Password management
+    bitwarden
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
