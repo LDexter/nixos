@@ -87,7 +87,6 @@
     packages = with pkgs; [
       firefox
       kate
-      vieb
     ];
   };
 
