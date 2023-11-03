@@ -161,8 +161,10 @@
   programs.git.enable = true;
   programs.git.userName = "LDexter";
   programs.git.userEmail = "ldextermiller@gmail.com";
-  programs.git.signing.signByDefault = true;
-  programs.git.signing.key = builtins.readFile "${inputs.self}/${config.home.username}/key.txt";
+  #programs.git.signing.signByDefault = true;
+  #programs.git.signing.key = "2839 D41D DD34 6506 8E12  9A37 D2A5 0AFC 02B7 9AA7";
+  # Dual GPG key attempt
+  #builtins.readFile "${inputs.self}/${config.home.username}/key.txt";
 
   # To look all official
   programs.gpg.enable = true;

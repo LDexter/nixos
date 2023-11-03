@@ -92,8 +92,16 @@
     description = "bano";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      # Simple text editor, will remove eventually
       kate
+
+      # Driver support for Vulkan
       mesa
+
+      # Display and login management
+      libsForQt5.sddm
+      libsForQt5.sddm-kcm
+      libsForQt5.kcmutils
     ];
   };
 
