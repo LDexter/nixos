@@ -162,7 +162,7 @@
   programs.git.userName = "LDexter";
   programs.git.userEmail = "ldextermiller@gmail.com";
   programs.git.signing.signByDefault = true;
-  programs.git.signing.key = "B2B1 211A B361 CFE2 448E  1172 B294 DA11 01EF 9C73";
+  programs.git.signing.key = builtins.readFile "${inputs.self}/${config.networking.hostname}/key.txt";
 
   # To look all official
   programs.gpg.enable = true;
