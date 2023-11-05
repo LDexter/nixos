@@ -142,107 +142,111 @@
     # EDITOR = "emacs";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
-  # Alias shenanigans
-  programs.bash.enable = true;
-  programs.bash.shellAliases = {
-    neofetch="neofetch --ascii /home/bano/Pictures/ASCII/NixOwOs.txt --ascii_colors 4 5";
+  # PROGRAMS
+  programs = {
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
+
+    # Alias shenanigans
+    bash.enable = true;
+    bash.shellAliases = {
+      neofetch="neofetch --ascii /home/bano/Pictures/ASCII/NixOwOs.txt --ascii_colors 4 5";
+    };
+
+    # Rando numbers go brrr
+    htop.enable = true;
+
+    # neovim, because neovim
+    neovim.enable = true;
+
+    # Git.
+    git.enable = true;
+    git.userName = "LDexter";
+    git.userEmail = "ldextermiller@gmail.com";
+    #git.signing.signByDefault = true;
+    #git.signing.key = "2839 D41D DD34 6506 8E12  9A37 D2A5 0AFC 02B7 9AA7";
+    # Dual GPG key attempt
+    #builtins.readFile "${inputs.self}/${config.home.username}/key.txt";
+
+    # To look all official
+    gpg.enable = true;
+
+    # is cool
+    lf.enable = true;
+
+    # Actually sane terminal emulator
+    kitty.enable = true;
+    # Major config
+    kitty.shellIntegration.mode = "enabled no-cursor";
+    kitty.theme = "Sakura Night";
+    # General settings
+    kitty.settings = {
+      cursor_shape = "block";
+      background_opacity = "0.95";
+    };
+
+    # Get outta here with your Firefox
+    qutebrowser.enable = true;
+    # General settings
+    qutebrowser.searchEngines = {
+      w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
+      aw = "https://wiki.archlinux.org/?search={}";
+      nw = "https://nixos.wiki/index.php?search={}";
+      np = "https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query={}";
+      ya = "https://yandex.com/images/search?text={}";
+      yt = "https://www.youtube.com/results?search_query={}";
+    };
+    qutebrowser.settings = {
+      # Primary Light:     #FF5CE1
+      # Primary Dark:      #B55088
+      # Secondary Light:   #007F7F
+      # Secondary Dark:    #0F6365
+      # Tertiary:          #181426
+      # Success:           #34703E
+      # Warning:           #FEAE34
+      # Error:             #E43B44
+      colors = {
+        # Link hint colours
+        hints = {
+          bg = "#FF5CE1";
+          fg = "#FFFFFF";
+        };
+        # Completion colors
+        completion.item.selected.bg = "#FF5CE1";
+        completion.item.selected.border.bottom = "#FF5CE1";
+        completion.item.selected.border.top = "#FF5CE1";
+        # Message colours
+        messages.error.bg = "#E43B44";
+        messages.warning.bg = "#FEAE34";
+        # Tab colours
+        tabs.bar.bg = "#FF5CE1";
+        tabs.even.bg = "#007F7F";
+        tabs.odd.bg = "#0F6365";
+        tabs.selected.even.bg = "#FF5CE1";
+        tabs.selected.odd.bg = "#FF5CE1";
+        # Status colours
+        statusbar.normal.fg = "#FF5CE1";
+        statusbar.url.fg = "#007F7F";
+        statusbar.url.success.https.fg = "#34703E";
+        statusbar.url.error.fg = "#E43B44";
+        statusbar.url.warn.fg = "#FEAE34";
+        # Dark reader
+        webpage.darkmode.enabled = true;
+      };
+    };
+
+    # Badass music player
+    ncmpcpp.enable = true;
+
+    # Multiplexing is kinda nifty
+    tmux.enable = true;
+
+    # Best software in existence
+    thefuck.enable = true;
   };
-
-  # Rando numbers go brrr
-  programs.htop.enable = true;
-
-  # neovim, because neovim
-  programs.neovim.enable = true;
-
-  # Git.
-  programs.git.enable = true;
-  programs.git.userName = "LDexter";
-  programs.git.userEmail = "ldextermiller@gmail.com";
-  #programs.git.signing.signByDefault = true;
-  #programs.git.signing.key = "2839 D41D DD34 6506 8E12  9A37 D2A5 0AFC 02B7 9AA7";
-  # Dual GPG key attempt
-  #builtins.readFile "${inputs.self}/${config.home.username}/key.txt";
-
-  # To look all official
-  programs.gpg.enable = true;
   services.gpg-agent.enable = true;
   services.gpg-agent.extraConfig = ''
     pinentry-program ${pkgs.pinentry.qt}/bin/pinentry
   '';
-
-  # is cool
-  programs.lf.enable = true;
-
-  # Actually sane terminal emulator
-  programs.kitty.enable = true;
-  # Major config
-  programs.kitty.shellIntegration.mode = "enabled no-cursor";
-  programs.kitty.theme = "Sakura Night";
-  # General settings
-  programs.kitty.settings = {
-    cursor_shape = "block";
-    background_opacity = "0.95";
-  };
-
-  # Get outta here with your Firefox
-  programs.qutebrowser.enable = true;
-  # General settings
-  programs.qutebrowser.searchEngines = {
-    w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
-    aw = "https://wiki.archlinux.org/?search={}";
-    nw = "https://nixos.wiki/index.php?search={}";
-    np = "https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query={}";
-    ya = "https://yandex.com/images/search?text={}";
-    yt = "https://www.youtube.com/results?search_query={}";
-  };
-  programs.qutebrowser.settings = {
-    # Primary Light:     #FF5CE1
-    # Primary Dark:      #B55088
-    # Secondary Light:   #007F7F
-    # Secondary Dark:    #0F6365
-    # Tertiary:          #181426
-    # Success:           #34703E
-    # Warning:           #FEAE34
-    # Error:             #E43B44
-    colors = {
-      # Link hint colours
-      hints = {
-        bg = "#FF5CE1";
-        fg = "#FFFFFF";
-      };
-      # Completion colors
-      completion.item.selected.bg = "#FF5CE1";
-      completion.item.selected.border.bottom = "#FF5CE1";
-      completion.item.selected.border.top = "#FF5CE1";
-      # Message colours
-      messages.error.bg = "#E43B44";
-      messages.warning.bg = "#FEAE34";
-      # Tab colours
-      tabs.bar.bg = "#FF5CE1";
-      tabs.even.bg = "#007F7F";
-      tabs.odd.bg = "#0F6365";
-      tabs.selected.even.bg = "#FF5CE1";
-      tabs.selected.odd.bg = "#FF5CE1";
-      # Status colours
-      statusbar.normal.fg = "#FF5CE1";
-      statusbar.url.fg = "#007F7F";
-      statusbar.url.success.https.fg = "#34703E";
-      statusbar.url.error.fg = "#E43B44";
-      statusbar.url.warn.fg = "#FEAE34";
-      # Dark reader
-      webpage.darkmode.enabled = true;
-    };
-  };
-
-  # Badass music player
-  programs.ncmpcpp.enable = true;
-
-  # Multiplexing is kinda nifty
-  programs.tmux.enable = true;
-
-  # Best software in existence
-  programs.thefuck.enable = true;
 }
