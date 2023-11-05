@@ -159,15 +159,20 @@
 
     # neovim, because neovim
     neovim.enable = true;
+    
+    # emacs, becuase I was told to
+    emacs.enable = true;
 
     # Git.
-    git.enable = true;
-    git.userName = "LDexter";
-    git.userEmail = "ldextermiller@gmail.com";
-    #git.signing.signByDefault = true;
-    #git.signing.key = "2839 D41D DD34 6506 8E12  9A37 D2A5 0AFC 02B7 9AA7";
-    # Dual GPG key attempt
-    #builtins.readFile "${inputs.self}/${config.home.username}/key.txt";
+    git = {
+      enable = true;
+      userName = "LDexter";
+      userEmail = "ldextermiller@gmail.com";
+      # Dual GPG key attempt
+      #signing.signByDefault = true;
+      #git.signing.key = "2839 D41D DD34 6506 8E12  9A37 D2A5 0AFC 02B7 9AA7";
+      #builtins.readFile "${inputs.self}/${config.home.username}/key.txt";
+    };
 
     # To look all official
     gpg.enable = true;
@@ -176,63 +181,75 @@
     lf.enable = true;
 
     # Actually sane terminal emulator
-    kitty.enable = true;
-    # Major config
-    kitty.shellIntegration.mode = "enabled no-cursor";
-    kitty.theme = "Sakura Night";
-    # General settings
-    kitty.settings = {
-      cursor_shape = "block";
-      background_opacity = "0.95";
+    kitty = {
+      enable = true;
+      # Major config
+      shellIntegration.mode = "enabled no-cursor";
+      theme = "Sakura Night";
+      # General settings
+      settings = {
+        cursor_shape = "block";
+        background_opacity = "0.95";
+      };
     };
 
     # Get outta here with your Firefox
-    qutebrowser.enable = true;
-    # General settings
-    qutebrowser.searchEngines = {
-      w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
-      aw = "https://wiki.archlinux.org/?search={}";
-      nw = "https://nixos.wiki/index.php?search={}";
-      np = "https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query={}";
-      ya = "https://yandex.com/images/search?text={}";
-      yt = "https://www.youtube.com/results?search_query={}";
-    };
-    qutebrowser.settings = {
-      # Primary Light:     #FF5CE1
-      # Primary Dark:      #B55088
-      # Secondary Light:   #007F7F
-      # Secondary Dark:    #0F6365
-      # Tertiary:          #181426
-      # Success:           #34703E
-      # Warning:           #FEAE34
-      # Error:             #E43B44
-      colors = {
-        # Link hint colours
-        hints = {
-          bg = "#FF5CE1";
-          fg = "#FFFFFF";
+    qutebrowser = {
+      enable = true;
+      # General settings
+      searchEngines = {
+        w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
+        aw = "https://wiki.archlinux.org/?search={}";
+        nw = "https://nixos.wiki/index.php?search={}";
+        np = "https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query={}";
+        ya = "https://yandex.com/images/search?text={}";
+        yt = "https://www.youtube.com/results?search_query={}";
+      };
+      settings = {
+        # Primary Light:     #FF5CE1
+        # Primary Dark:      #B55088
+        # Secondary Light:   #007F7F
+        # Secondary Dark:    #0F6365
+        # Tertiary:          #181426
+        # Success:           #34703E
+        # Warning:           #FEAE34
+        # Error:             #E43B44
+        colors = {
+          # Link hint colours
+          hints = {
+            bg = "#FF5CE1";
+            fg = "#FFFFFF";
+          };
+          # Completion colors
+          completion.item.selected = {
+            bg = "#FF5CE1";
+            border.bottom = "#FF5CE1";
+            border.top = "#FF5CE1";
+          };
+          # Message colours
+          messages = {
+            error.bg = "#E43B44";
+            messages.warning.bg = "#FEAE34";
+          };
+          # Tab colours
+          tabs = {
+            bar.bg = "#FF5CE1";
+            even.bg = "#007F7F";
+            odd.bg = "#0F6365";
+            selected.even.bg = "#FF5CE1";
+            selected.odd.bg = "#FF5CE1";
+          };
+          # Status colours
+          statusbar = {
+            normal.fg = "#FF5CE1";
+            url.fg = "#007F7F";
+            url.success.https.fg = "#34703E";
+            url.error.fg = "#E43B44";
+            url.warn.fg = "#FEAE34";
+          };
+          # Dark reader
+          webpage.darkmode.enabled = true;
         };
-        # Completion colors
-        completion.item.selected.bg = "#FF5CE1";
-        completion.item.selected.border.bottom = "#FF5CE1";
-        completion.item.selected.border.top = "#FF5CE1";
-        # Message colours
-        messages.error.bg = "#E43B44";
-        messages.warning.bg = "#FEAE34";
-        # Tab colours
-        tabs.bar.bg = "#FF5CE1";
-        tabs.even.bg = "#007F7F";
-        tabs.odd.bg = "#0F6365";
-        tabs.selected.even.bg = "#FF5CE1";
-        tabs.selected.odd.bg = "#FF5CE1";
-        # Status colours
-        statusbar.normal.fg = "#FF5CE1";
-        statusbar.url.fg = "#007F7F";
-        statusbar.url.success.https.fg = "#34703E";
-        statusbar.url.error.fg = "#E43B44";
-        statusbar.url.warn.fg = "#FEAE34";
-        # Dark reader
-        webpage.darkmode.enabled = true;
       };
     };
 
@@ -245,8 +262,12 @@
     # Best software in existence
     thefuck.enable = true;
   };
-  services.gpg-agent.enable = true;
-  services.gpg-agent.extraConfig = ''
-    pinentry-program ${pkgs.pinentry.qt}/bin/pinentry
-  '';
+  
+  # Ensuring gpg has access to pinentry
+  services.gpg-agent = {
+    enable = true;
+    extraConfig = ''
+      pinentry-program ${pkgs.pinentry.qt}/bin/pinentry
+    '';
+  };
 }
