@@ -229,7 +229,7 @@
           # Message colours
           messages = {
             error.bg = "#E43B44";
-            messages.warning.bg = "#FEAE34";
+            warning.bg = "#FEAE34";
           };
           # Tab colours
           tabs = {
