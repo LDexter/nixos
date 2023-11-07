@@ -151,9 +151,14 @@
     # Alias shenanigans
     bash.enable = true;
     bash.shellAliases = {
+      # NixOwOs setup
       neofetch="neofetch --ascii /home/bano/Pictures/ASCII/NixOwOs.txt --ascii_colors 4 5";
+      
+      # Switches
       nsw="sudo nixos-rebuild --flake ~/nixos switch";
       hmsw="home-manager switch --flake ~/nixos/home-manager";
+      
+      # Updates
       nup="nix flake update ~/nixos";
       hmup="nix flake update ~/nixos/home-manager";
     };
@@ -202,12 +207,20 @@
       enable = true;
       # General settings
       searchEngines = {
+        # Standard search
         w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
         aw = "https://wiki.archlinux.org/?search={}";
         nw = "https://nixos.wiki/index.php?search={}";
         np = "https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query={}";
         ya = "https://yandex.com/images/search?text={}";
         yt = "https://www.youtube.com/results?search_query={}";
+        
+        # Japanese/English
+        jaen = "https://www.deepl.com/translator#ja/en/{}";
+        enja = "https://www.deepl.com/translator#en/ja/{}";
+        # Russian/English
+        ruen = "https://www.deepl.com/translator#ru/en/{}";
+        enru = "https://www.deepl.com/translator#en/ru/{}";
       };
       settings = {
         # Primary Light:     #FF5CE1
