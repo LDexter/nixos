@@ -152,6 +152,10 @@
     bash.enable = true;
     bash.shellAliases = {
       neofetch="neofetch --ascii /home/bano/Pictures/ASCII/NixOwOs.txt --ascii_colors 4 5";
+      nsw="sudo nixos-rebuild --flake ~/nixos switch";
+      hmsw="home-manager switch --flake ~/nixos/home-manager";
+      nup="nix flake update ~/nixos";
+      hmup="nix flake update ~/nixos/home-manager";
     };
 
     # Rando numbers go brrr
