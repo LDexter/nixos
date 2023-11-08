@@ -165,23 +165,22 @@
 
     # Rando numbers go brrr
     htop.enable = true;
-
-    # neovim, because neovim
-    neovim.enable = true;
     
-    # Becuase I was told to
-    emacs.enable = true;
-    emacs.extraPackages = epkgs: 
-      [ 
-        epkgs.use-package 
-        epkgs.sakura-theme
-        epkgs.magit
-        epkgs.melpa-upstream-visit
-        epkgs.org epkgs.command-log-mode
-        epkgs.ivy epkgs.counsel
-        epkgs.doom-modeline
-      ];
-    emacs.extraConfig = builtins.readFile(./init.el);
+    # The lifestyle
+    emacs = {
+      enable = true;
+      extraPackages = epkgs: 
+        [ 
+          epkgs.use-package 
+          epkgs.sakura-theme
+          epkgs.magit
+          epkgs.melpa-upstream-visit
+          epkgs.org epkgs.command-log-mode
+          epkgs.ivy epkgs.counsel
+          epkgs.doom-modeline
+        ];
+      extraConfig = builtins.readFile(./init.el);
+    };
 
     # Git.
     git = {
@@ -302,7 +301,10 @@
     '';
   };
 
-  services.emacs.enable = true;
-  services.emacs.defaultEditor = true;
-  services.emacs.startWithUserSession = "graphical";
+  # For running as daemon
+  services = {
+    emacs.enable = true;
+    emacs.defaultEditor = true;
+    emacs.startWithUserSession = "graphical";
+  };
 }
