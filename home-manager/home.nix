@@ -152,7 +152,7 @@
     bash.enable = true;
     bash.shellAliases = {
       # NixOwOs setup
-      neofetch="neofetch --ascii /home/bano/Pictures/ASCII/NixOwOs.txt --ascii_colors 4 5";
+      neofetch="neofetch --ascii /home/bano/nixos/home-manager/NixOwOs.txt --ascii_colors 4 5";
       
       # Switches
       nsw="sudo nixos-rebuild --flake ~/nixos switch";
