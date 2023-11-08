@@ -1,8 +1,23 @@
+;; Make Elisp files in that directory available to the user.
+;;(add-to-list 'load-path "~/home-manager/manual-packages/ef-themes")
+
+
+;; Theme setup
+(require 'ef-themes)
+(setq ef-themes-mixed-fonts t
+      ef-themes-variable-pitch-ui t)
+
+;; Disable all other themes to avoid awkward blending:
+(mapc #'disable-theme custom-enabled-themes)
+
+;; Load the theme of choice:
+(load-theme 'ef-cherie :no-confirm)
+
+
 ;; Major settings
 (setq inhibit-startup-message t)
 (setq visible-bell t)
 (set-face-attribute 'default nil :font "Fira Code Retina" :height 100)
-(load-theme 'tango-dark)
 
 
 ;; General bindings

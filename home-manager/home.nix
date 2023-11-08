@@ -161,6 +161,9 @@
       # Updates
       nup="nix flake update ~/nixos";
       hmup="nix flake update ~/nixos/home-manager";
+
+      # Emacs
+      ekill="emacsclient -e '(kill-emacs)'";
     };
 
     # Rando numbers go brrr
@@ -172,7 +175,7 @@
       extraPackages = epkgs: 
         [ 
           epkgs.use-package 
-          epkgs.sakura-theme
+          epkgs.ef-themes
           epkgs.magit
           epkgs.melpa-upstream-visit
           epkgs.org epkgs.command-log-mode
