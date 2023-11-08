@@ -169,8 +169,19 @@
     # neovim, because neovim
     neovim.enable = true;
     
-    # emacs, becuase I was told to
+    # Becuase I was told to
     emacs.enable = true;
+    emacs.extraPackages = epkgs: 
+      [ 
+        epkgs.use-package 
+        epkgs.sakura-theme
+        epkgs.magit
+        epkgs.melpa-upstream-visit
+        epkgs.org epkgs.command-log-mode
+        epkgs.ivy epkgs.counsel
+        epkgs.doom-modeline
+      ];
+    emacs.extraConfig = builtins.readFile(./init.el);
 
     # Git.
     git = {
@@ -195,10 +206,13 @@
       # Major config
       shellIntegration.mode = "enabled no-cursor";
       theme = "Sakura Night";
+      font.package = pkgs.dejavu_fonts;
+      font.name = "DejaVu Sans";
+      font.size = 13;
       # General settings
       settings = {
         cursor_shape = "block";
-        background_opacity = "0.95";
+        background_opacity = "0.9";
       };
     };
 
@@ -287,4 +301,8 @@
       pinentry-program ${pkgs.pinentry.qt}/bin/pinentry
     '';
   };
+
+  services.emacs.enable = true;
+  services.emacs.defaultEditor = true;
+  services.emacs.startWithUserSession = "graphical";
 }
