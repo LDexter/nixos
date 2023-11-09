@@ -164,6 +164,7 @@
 
       # Emacs
       ekill="emacsclient -e '(kill-emacs)'";
+      epkgs="nix-env -f '<nixpkgs>' -qaP -A emacsPackages";
     };
 
     # Rando numbers go brrr
