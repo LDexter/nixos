@@ -65,7 +65,7 @@
     # Better safe than sorry
     clamav
 
-    # Honestly cannot believe this whack is on here
+    # Honestly cannot believe this whack has a nix package
     craftos-pc
 
     # Some funky stuff from charm.sh
@@ -111,6 +111,9 @@
 
     # Password management
     bitwarden
+
+    # Fisce
+    asciiquarium
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -215,7 +218,7 @@
       # General settings
       settings = {
         cursor_shape = "block";
-        background_opacity = "0.9";
+        background_opacity = "0.85";
       };
     };
 
