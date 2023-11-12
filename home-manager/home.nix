@@ -114,6 +114,9 @@
 
     # Fisce
     asciiquarium
+
+    # For doom-modeline icons
+    nerdfonts
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -178,13 +181,29 @@
       enable = true;
       extraPackages = epkgs: 
         [ 
-          epkgs.use-package 
+          epkgs.use-package
+          epkgs.doom-themes
           epkgs.ef-themes
           epkgs.magit
           epkgs.melpa-upstream-visit
-          epkgs.org epkgs.command-log-mode
-          epkgs.ivy epkgs.counsel
+          epkgs.org
+          epkgs.command-log-mode
+          epkgs.evil
+          epkgs.evil-collection
+          epkgs.ivy
+          epkgs.ivy-rich
+          epkgs.counsel
           epkgs.doom-modeline
+          epkgs.nerd-icons
+          epkgs.nerd-icons-completion
+          epkgs.nerd-icons-dired
+          epkgs.nerd-icons-ibuffer
+          epkgs.nerd-icons-ivy-rich
+          epkgs.rainbow-delimiters
+          epkgs.which-key
+          epkgs.helpful
+          epkgs.general
+          epkgs.hydra
         ];
       extraConfig = builtins.readFile(./init.el);
     };
@@ -298,6 +317,9 @@
 
     # Best software in existence
     thefuck.enable = true;
+
+    # Simple image viewing!
+    feh.enable = true;
   };
   
   # Ensuring gpg has access to pinentry
