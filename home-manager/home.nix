@@ -145,7 +145,6 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    # EDITOR = "emacs";
   };
 
 
@@ -169,6 +168,9 @@
       hmup="nix flake update ~/nixos/home-manager";
 
       # Emacs
+      enew="emacsclient --create-frame";
+      estart="systemctl --user start emacs.service";
+      ereload="systemctl --user daemon-reload";
       ekill="emacsclient -e '(kill-emacs)'";
       epkgs="nix-env -f '<nixpkgs>' -qaP -A emacsPackages";
     };
@@ -204,6 +206,7 @@
           epkgs.helpful
           epkgs.general
           epkgs.hydra
+          epkgs.nix-mode
         ];
       extraConfig = builtins.readFile(./init.el);
     };
@@ -245,6 +248,23 @@
     qutebrowser = {
       enable = true;
       # General settings
+      keyBindings = {
+        normal = {
+          # Motion mappings
+          "Y" = "back";
+          "N" = "tab-next";
+          "n" = "scroll down";
+          "e" = "scroll up";
+          "E" = "tab-prev";
+          "O" = "forward";
+          # Replacements
+          "c" = "yank";
+          "v" = "open {clipboard}";
+          "," = "search-prev";
+          "." = "search-next";
+          "<Space>" = "mode-enter caret ;; selection-toggle --line";
+        };
+      };
       searchEngines = {
         # Standard search
         w = "https://en.wikipedia.org/wiki/Special:Search?search={}&go=Go&ns0=1";
@@ -262,6 +282,8 @@
         enru = "https://www.deepl.com/translator#en/ru/{}";
       };
       settings = {
+        # Restore tabs
+        auto_save.session = true;
         # Primary Light:     #FF5CE1
         # Primary Dark:      #B55088
         # Secondary Light:   #007F7F
@@ -304,7 +326,7 @@
             url.warn.fg = "#FEAE34";
           };
           # Dark reader
-          webpage.darkmode.enabled = true;
+          webpage.darkmode.enabled = true;          
         };
       };
     };
@@ -320,6 +342,9 @@
 
     # Simple image viewing!
     feh.enable = true;
+
+    # Multi-display configuration
+    autorandr.enable = true;
   };
   
   # Ensuring gpg has access to pinentry
@@ -330,10 +355,15 @@
     '';
   };
 
-  # For running as daemon
-  services = {
-    emacs.enable = true;
-    emacs.defaultEditor = true;
-    emacs.startWithUserSession = "graphical";
+  # For running Emacs as daemon
+  services.emacs = {
+    enable = true;
+    defaultEditor = true;
+    startWithUserSession = "graphical";
+  };
+
+  # autorandr systemd service
+  services.autorandr = {
+    enable = true;
   };
 }

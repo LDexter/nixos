@@ -1,8 +1,8 @@
 ;; Theme setup
 (add-to-list 'load-path "~/home-manager/manual-packages/ef-themes")
 (require 'ef-themes)
-;;(setq ef-themes-mixed-fonts t
-      ;;ef-themes-variable-pitch-ui t)
+(setq ef-themes-mixed-fonts t
+      ef-themes-variable-pitch-ui t)
 ;; Disable all other themes to avoid awkward blending:
 (mapc #'disable-theme custom-enabled-themes)
 ;; Load the theme of choice:
@@ -204,6 +204,11 @@
 (setq doom-modeline-icon t)
 (setq doom-modeline-major-mode-icon t)
 (setq find-file-visit-truename t)
+
+
+;; Nix Mode
+(use-package nix-mode
+  :mode "\\.nix\\'")
 
 
 ;; Hydra
