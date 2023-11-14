@@ -237,7 +237,7 @@
       # General settings
       settings = {
         cursor_shape = "block";
-        background_opacity = "0.85";
+        background_opacity = "0.90";
       };
     };
 

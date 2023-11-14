@@ -1,8 +1,8 @@
 ;; Theme setup
 (add-to-list 'load-path "~/home-manager/manual-packages/ef-themes")
 (require 'ef-themes)
-(setq ef-themes-mixed-fonts t
-      ef-themes-variable-pitch-ui t)
+;;(setq ef-themes-mixed-fonts t
+      ;;ef-themes-variable-pitch-ui t)
 ;; Disable all other themes to avoid awkward blending:
 (mapc #'disable-theme custom-enabled-themes)
 ;; Load the theme of choice:
@@ -12,7 +12,7 @@
 ;; Major settings
 (setq inhibit-startup-message t)
 (setq visible-bell t)
-(set-face-attribute 'default nil :font "Fira Code Retina" :height 120)
+(set-face-attribute 'default nil :font "Fira Code Retina" :height 113)
 
 
 ;; UI setup
@@ -78,13 +78,44 @@
   ;; Set states
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal))
+  ;; Nowmal/Motion state map for Workman layout (while remaining fully QWERTY-compatible)
+  (evil-define-key '(normal motion) 'global
+    ;; Motion mappings
+    "y" 'evil-backward-char  ;; Instead of "h"
+    "n" 'evil-next-line      ;; Instead of "j"
+    "e" 'evil-previous-line  ;; Instead of "k"
+    "o" 'evil-forward-char   ;; Instead of "l"
+    ;; Normal mappings and old motion mappings
+    "\\" 'evil-change-line         ;; From "c"
+    "c" 'evil-yank                 ;; From "y"
+    "v" 'evil-paste-after          ;; From "p"
+    (kbd "SPC") 'evil-visual-char  ;; From "v"
+    "p" 'evil-open-below)          ;; From "o"
+    ;; Window state map currently broken - issue with capital letters? Use (kbd "<shift>-Y") instead?
+    ;;"Y" 'evil-window-top
+    ;;"n" 'evil-window-down
+    ;;"N" 'evil-window-move-very-bottom)
 
 
 ;; Evil Collection
 (use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
+  :after evil)
+;; Setup for Workman layout (must check for possible QWERTY compatibility)
+(defun my-hjkl-rotation (_mode mode-keymaps &rest _rest)
+  (evil-collection-translate-key 'normal mode-keymaps
+    ;; New mappings
+    "y" "h"
+    "n" "j"
+    "e" "k"
+    "o" "l"
+    ;; Replace old mappings
+    "h" "y"
+    "j" "n"
+    "k" "e"
+    "l" "o"))
+;; called after evil-collection makes its keybindings
+(add-hook 'evil-collection-setup-hook #'my-hjkl-rotation)
+(evil-collection-init)
 
 
 ;; Ivy
@@ -153,7 +184,6 @@
   :config
   (general-create-definer bano/leader-keys
     :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
     :global-prefix "C-SPC")
   (bano/leader-keys
     "t"  '(:ignore t :which-key "toggles")))
@@ -188,4 +218,5 @@
 ;; Leader keys for General
 (bano/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text")
-  "tt" '(counsel-load-theme :which-key "choose theme"))
+  "tt" '(counsel-load-theme :which-key "choose theme")
+  "tf" '(toggle-frame-fullscreen :which-key "toggle fullscreen"))
