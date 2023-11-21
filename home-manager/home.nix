@@ -158,18 +158,22 @@
     bash.shellAliases = {
       # NixOwOs setup
       neofetch="neofetch --ascii /home/bano/nixos/home-manager/NixOwOs.txt --ascii_colors 4 5";
+
+      # Shutdown and reboot
+      sd="shutdown now";
+      rb="reboot";
       
       # Switches
-      nsw="sudo nixos-rebuild --flake ~/nixos switch";
+      nxsw="sudo nixos-rebuild --flake ~/nixos switch";
       hmsw="home-manager switch --flake ~/nixos/home-manager";
       
       # Updates
-      nup="nix flake update ~/nixos";
+      nxup="nix flake update ~/nixos";
       hmup="nix flake update ~/nixos/home-manager";
 
       # Emacs
-      enew="emacsclient --create-frame";
       estart="systemctl --user start emacs.service";
+      eopen="emacsclient --create-frame";
       ereload="systemctl --user daemon-reload";
       ekill="emacsclient -e '(kill-emacs)'";
       epkgs="nix-env -f '<nixpkgs>' -qaP -A emacsPackages";
@@ -273,6 +277,7 @@
         np = "https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query={}";
         ya = "https://yandex.com/images/search?text={}";
         yt = "https://www.youtube.com/results?search_query={}";
+        gh = "https://github.com/search?q={}";
         
         # Japanese/English
         jaen = "https://www.deepl.com/translator#ja/en/{}";
@@ -344,7 +349,8 @@
     feh.enable = true;
 
     # Multi-display configuration
-    autorandr.enable = true;
+    # Disabled until needs arise
+    #autorandr.enable = true;
   };
   
   # Ensuring gpg has access to pinentry
@@ -363,7 +369,6 @@
   };
 
   # autorandr systemd service
-  services.autorandr = {
-    enable = true;
-  };
+  # Disabled until needs arise
+  #services.autorandr.enable = true;
 }
