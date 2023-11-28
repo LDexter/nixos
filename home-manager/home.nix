@@ -120,6 +120,7 @@
 
     # Web development
     nodejs_20
+    sass
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -189,7 +190,8 @@
     emacs = {
       enable = true;
       extraPackages = epkgs: 
-        [ 
+        [
+          # General packages
           epkgs.use-package
           epkgs.doom-themes
           epkgs.ef-themes
@@ -213,7 +215,16 @@
           epkgs.helpful
           epkgs.general
           epkgs.hydra
+          epkgs.yasnippet
+
+          # Language packages
           epkgs.nix-mode
+
+          # Web development
+          epkgs.react-snippets
+          epkgs.rjsx-mode
+          epkgs.json-mode
+          epkgs.scss-mode
         ];
       extraConfig = builtins.readFile(./init.el);
     };

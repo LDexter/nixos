@@ -225,3 +225,15 @@
   "ts" '(hydra-text-scale/body :which-key "scale text")
   "tt" '(counsel-load-theme :which-key "choose theme")
   "tf" '(toggle-frame-fullscreen :which-key "toggle fullscreen"))
+
+
+;; Web development
+(require 'yasnippet)
+(yas-global-mode 1)
+(require 'react-snippets)
+(require 'rjsx-mode)
+(require 'json-mode)
+;; TODO: Figure out SCSS
+;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/folder-where-you-put-scss-mode-el"))
+;;(autoload 'scss-mode "scss-mode")
+;;(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
