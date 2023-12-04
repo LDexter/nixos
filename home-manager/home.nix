@@ -121,6 +121,9 @@
     # Web development
     nodejs_20
     sass
+
+    # For when qutebrowser plays up
+    vieb
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
