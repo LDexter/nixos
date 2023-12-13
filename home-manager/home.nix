@@ -1,11 +1,6 @@
 { config, pkgs, inputs, ... }:
 
-{
-  imports =
-    [
-      #./upkgs.nix
-    ];
-  
+{ 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "bano";
@@ -29,6 +24,11 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
+  # When some Electron app devs are too stubborn for an update
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+  
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -129,10 +129,6 @@
 
     # For when qutebrowser plays up
     vieb
-
-    # Music!
-    #upkgs.youtube-music
-    #upkgs.ytmdesktop
   ];
   
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
