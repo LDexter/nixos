@@ -133,6 +133,7 @@
     # I need my videos and music local thanks
     yt-dlp
     ytmdl
+    ffmpeg
 
     # A simple video player. Is this too much to ask??
     mplayer
