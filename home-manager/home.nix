@@ -53,7 +53,7 @@
     neofetch
 
     # My ThinkPad can only handle so much cord bloat... Also themes and plugins!
-    armcord
+    vesktop
 
     # Never have too many mods
     prismlauncher
@@ -134,6 +134,7 @@
     yt-dlp
     ytmdl
     ffmpeg
+    picard
 
     # A simple video player. Is this too much to ask??
     mplayer
@@ -368,7 +369,48 @@
     };
 
     # Badass music player
-    ncmpcpp.enable = true;
+    ncmpcpp = {
+      enable = true;
+      mpdMusicDir = "~/Music";
+      package = pkgs.ncmpcpp.override { visualizerSupport = true; };
+
+      settings = {
+        visualizer_data_source = "/tmp/mpd.fifo";
+        visualizer_output_name = "my_fifo";
+        visualizer_in_stereo = "yes";
+        visualizer_type = "wave_filled";
+        visualizer_look = "<#";
+        visualizer_color = "220, 213, 206, 199, 162, 125";
+
+        alternative_header_first_line_format = "$b$(54)$aqqu$/a$9 $3{%t}|{%f} $9$(54)$atqq$/a$9$/b";
+        alternative_header_second_line_format = "{{$4$b%a$/b$9}{ - $(106)%b$9}{ ($4%y$9)}}|{%D}";
+        
+        main_window_color = 14;
+        alternative_ui_separator_color = 54;
+        window_border_color = 54;
+        progressbar_color = 185;
+        song_columns_list_format = "(20)[14]{a} (45)[3]{t|f:Title} (25)[106]{b} (7f)[220]{l}";
+
+        progressbar_look = "─🌸·";
+        playlist_disable_highlight_delay = 0;
+        user_interface = "alternative";
+        lyrics_fetchers = "azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet";
+        follow_now_playing_lyrics = "yes";
+        fetch_lyrics_for_current_song_in_background = "yes";
+
+        startup_screen = "visualizer";
+        startup_slave_screen = "playlist";
+        startup_slave_screen_focus = "yes";
+        locked_screen_width_part = 60;
+
+        jump_to_now_playing_song_at_start = "yes";
+        display_bitrate = "yes";
+        mouse_support = "no";
+      };
+    };
+
+    # Sicksass visualisation
+    cava.enable = true;
 
     # Multiplexing is kinda nifty
     tmux.enable = true;
@@ -399,6 +441,16 @@
     startWithUserSession = "graphical";
   };
 
+  services.mpd-discord-rpc = {
+    enable = true;
+    settings = {
+      format = {
+        details = "Weebing to $title";
+        state = "By $artist, from $album";
+      };
+    };
+  };
+  
   # autorandr systemd service
   # Disabled until needs arise
   #services.autorandr.enable = true;

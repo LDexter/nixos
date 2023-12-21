@@ -193,4 +193,29 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+
+  # MPD setup
+  systemd.services.mpd.environment = { XDG_RUNTIME_DIR = "/run/user/1000"; };
+
+  services.gvfs.enable = true;
+
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/home/bano/Music";
+    user = "bano";
+    extraConfig = ''
+      audio_output {
+        type        "fifo"
+        name        "my_fifo"
+        path        "/tmp/mpd.fifo"
+        format      "44100:16:2"
+        buffer_time "100000"
+      }
+      audio_output {
+        type        "pipewire"
+        name        "pipe"
+      }
+    '';
+  };
 }
