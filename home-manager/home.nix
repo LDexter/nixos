@@ -169,7 +169,6 @@
   home.sessionVariables = {
   };
 
-
   # PROGRAMS
   programs = {
     # Let Home Manager install and manage itself.
@@ -429,9 +428,7 @@
   # Ensuring gpg has access to pinentry
   services.gpg-agent = {
     enable = true;
-    extraConfig = ''
-      pinentry-program ${pkgs.pinentry.qt}/bin/pinentry
-    '';
+    pinentryFlavor = "qt";
   };
 
   # For running Emacs as daemon
