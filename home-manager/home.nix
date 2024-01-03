@@ -133,12 +133,15 @@
     # I need my videos and music local thanks
     yt-dlp
     ytmdl
-    ffmpeg
+    ffmpeg-full
     picard
 
     # A simple video player. Is this too much to ask??
     mplayer
     qmplay2
+
+    # Pulling files
+    wget
   ];
   
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
