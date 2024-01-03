@@ -142,6 +142,9 @@
 
     # Pulling files
     wget
+
+    # Coolest clock around!
+    peaclock
   ];
   
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
