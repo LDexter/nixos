@@ -24,6 +24,14 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.nat.enable = true;
+  networking.nat.internalInterfaces = [
+    "eth0"
+  ];
+  systemd.services.ModemManager =  {
+    wantedBy = [ "networking.target" ];
+    scriptArgs = "--debug";
+  };
 
   # Set your time zone.
   time.timeZone = "Australia/Brisbane";
@@ -102,6 +110,10 @@
       libsForQt5.sddm
       libsForQt5.sddm-kcm
       libsForQt5.kcmutils
+
+      # LTE Setup
+      networkmanager
+      modemmanager
     ];
   };
 

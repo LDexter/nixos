@@ -198,6 +198,11 @@
       ereload="systemctl --user daemon-reload";
       ekill="emacsclient -e '(kill-emacs)'";
       epkgs="nix-env -f '<nixpkgs>' -qaP -A emacsPackages";
+
+      # LTE networking
+      ltestart="sudo nmcli c add type gsm ifname '*' con-name NixPad-CON apn cdc-wdm0";
+      lteon="nmcli r wwan on";
+      lteoff="nmcli r wwan off";
     };
 
     # Rando numbers go brrr
