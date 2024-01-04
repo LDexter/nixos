@@ -140,16 +140,15 @@
   # WIREGUARD SETUP
   networking.wg-quick.interfaces = {
     wg0 = {
-      autostart = false;
-      address = [ "10.66.66.5/32" "fd42:42:42::5/128" ];
+      address = [ "10.66.66.3/32" "fd42:42:42::3/128" ];
       dns = [ "1.1.1.1" "1.0.0.1" ];
       privateKeyFile = "/home/bano/wg/.wgprivkey";
 
       peers = [{
-        publicKey = "GzIe5T+UPu6rg6PV/hCY1EycppeTSlhJHgQBEhVGjDo=";
+        publicKey = "DJOd3EDp7iB8k6mLiS3S67pVzlzmdvv9fRuHzzy/fXE=";
         presharedKeyFile = "/home/bano/wg/.wgpresharedkey";
-        endpoint = "46.29.236.25:51820";
-        allowedIPs = [ "0.0.0.0/0,::/0" ];
+        endpoint = "194.226.49.153:50868";
+        allowedIPs = [ "10.66.66.0/24" ];
       }];
     };
   };

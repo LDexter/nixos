@@ -179,22 +179,4 @@
   hardware.opengl.enable = true;
   boot.kernelParams = [ "i915.force_probe=0a16" ];
   hardware.opengl.extraPackages = [ pkgs.mesa.drivers ];
-
-
-  # WIREGUARD SETUP
-  networking.wg-quick.interfaces = {
-    wg0 = {
-      autostart = false;
-      address = [ "10.66.66.5/32" "fd42:42:42::5/128" ];
-      dns = [ "1.1.1.1" "1.0.0.1" ];
-      privateKeyFile = "/home/bano/wg/.wgprivkey";
-
-      peers = [{
-        publicKey = "GzIe5T+UPu6rg6PV/hCY1EycppeTSlhJHgQBEhVGjDo=";
-        presharedKeyFile = "/home/bano/wg/.wgpresharedkey";
-        allowedIPs = [ "0.0.0.0/0" "::/0" ];
-        endpoint = "46.29.236.25:51820";
-      }];
-    };
-  };
 }
