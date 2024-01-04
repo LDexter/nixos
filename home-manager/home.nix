@@ -188,8 +188,43 @@ in
         ] ++ mapAttrsToList (n: v:
           "nmap ${n} ${v}"
         ) {
-          "j" = "<scrollPageDownHalf>";
-          "k" = "<scrollPageUpHalf>";
+          # Alternatives
+          # Movement
+          "y" = "<scrollLeft>";        # h alt
+          "n" = "<scrollDown>";        # j alt
+          "e" = "<scrollUp>";          # k alt
+          "o" = "<scrollRight>";       # l alt
+
+          # History and tabs
+          "Y" = "<backInHistory>";     # H alt
+          "N" = "<nextTab>";           # J alt
+          "E" = "<previousTab>";       # K alt
+          "O" = "<forwardInHistory>";  # L alt
+
+          # Substitutions
+          # The mess of yank
+          "cR<Any>" = "<pageRSSLinkToClipboard>";  # yR<Any> sub
+          "cRL" = "<pageRSSLinksList>";            # yRL sub
+          "ce" = "<pageToClipboardEmacs>";         # ye sub
+          "cf" = "<startFollowCopyLink>";          # yf sub
+          "ch" = "<pageToClipboardHTML>";          # yh sub
+          "cm" = "<pageToClipboardMarkdown>";      # ym sub
+          "cr" = "<pageToClipboardRST>";           # yr sub
+          "cs" = "<p.copyText>";                   # ys sub
+          "ct" = "<pageTitleToClipboard>";         # yt sub
+          "c" = "<pageToClipboard>";               # yy sub
+
+          # Everything else
+          "." = "<nextSearchMatch>";             # n sub
+          "," = "<previousSearchMatch>";         # N sub
+          "s" = "<toExploreMode>";               # e sub ("s" for <p.moveToMouse> would suggest I use a mouse)
+          "S" = "<:tabnew><toExploreMode>";      # E sub
+          "tO" = "<moveTabEnd>";                 # O sub (no "o" default)
+          "FS" = "<startFollowNewSplit>";        # S sub
+          "FV" = "<startFollowNewVerSplit>";     # V sub
+          "p" = "<p.start>";                     # v sub (a little phonetics balance for messing with e)
+          "v" = "<openFromClipboard>";           # p sub
+          "V" = "<:tabnew><openFromClipboard>";  # P sub
         });
   };
 
