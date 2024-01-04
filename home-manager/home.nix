@@ -212,7 +212,8 @@ in
           "cr" = "<pageToClipboardRST>";           # yr sub
           "cs" = "<p.copyText>";                   # ys sub
           "ct" = "<pageTitleToClipboard>";         # yt sub
-          "c" = "<pageToClipboard>";               # yy sub
+          "cc" = "<pageToClipboard>";              # yy sub
+          "c" = "<pageToClipboard>";               # Backup if no key code
 
           # Everything else
           "." = "<nextSearchMatch>";             # n sub
