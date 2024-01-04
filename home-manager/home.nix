@@ -180,6 +180,7 @@ in
           tabreopenposition = "previous";
           dialogconfirm = "show";
           nativetheme = "dark";
+          darkreader = true;
           notificationforpermissions = "all";
           useragent = "%default";
           userscript = true;
@@ -188,7 +189,7 @@ in
         ] ++ mapAttrsToList (n: v:
           "nmap ${n} ${v}"
         ) {
-          # Alternatives
+          # Alternatives for Workman layout while maintaining QWERTY backwards compatibility
           # Movement
           "y" = "<scrollLeft>";        # h alt
           "n" = "<scrollDown>";        # j alt
@@ -226,7 +227,11 @@ in
           "p" = "<p.start>";                     # v sub (a little phonetics balance for messing with e)
           "v" = "<openFromClipboard>";           # p sub
           "V" = "<:tabnew><openFromClipboard>";  # P sub
-        });
+        } ++ mapAttrsToList (n: v: "${n} ${v}")
+          {
+            #"colorscheme" = builtins.readFile ./compactCustom.css;
+            "colorscheme" = "compact";
+          });
   };
 
   # You can also manage environment variables but you will have to manually
