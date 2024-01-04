@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
+
+let
+  inherit (builtins) concatStringsSep isBool;
+  inherit (lib) mkOption types escapeShellArg mapAttrsToList mapAttrs' nameValuePair;
+in
 
 { 
   # Home Manager needs a bit of information about you and the paths it should
@@ -127,7 +132,7 @@
     nodejs_20
     sass
 
-    # For when qutebrowser plays up
+    # Outta here with your normie Firefox!
     vieb
 
     # I need my videos and music local thanks
@@ -160,6 +165,32 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    ".vieb/viebrc".text = concatStringsSep "\n" (
+        mapAttrsToList (n: v:
+          if isBool v then
+            "set ${if v then "" else "no"}${n}"
+          else
+            "set ${n}=${v}"
+        ) {
+          adblocker = "update";
+          downloadmethod = "confirm";
+          suspendbackgroundtab = false;
+          tabcycle = false;
+          tabreopenposition = "previous";
+          dialogconfirm = "show";
+          nativetheme = "dark";
+          notificationforpermissions = "all";
+          useragent = "%default";
+          userscript = true;
+          vimcommand = ''"emacsclient -c"'';
+        } ++ map (x: "unmap ${x}") [
+        ] ++ mapAttrsToList (n: v:
+          "nmap ${n} ${v}"
+        ) {
+          "j" = "<scrollPageDownHalf>";
+          "k" = "<scrollPageUpHalf>";
+        });
   };
 
   # You can also manage environment variables but you will have to manually
