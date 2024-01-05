@@ -17,52 +17,85 @@
 */
 /* colors */
 :root {
-    /* general */
-    --bg: #eee;
-    --fg: #333;
-    --tab-background: #ddd;
-    --tab-suspended: #777;
-    --visible-tab: #fff;
-    --tab-crashed: #faa;
-    --mode-normal-fg: #333;
-    --mode-insert-fg: #0c0;
-    --mode-explore-fg: #0cc;
-    --mode-search-fg: #fb0;
+    /* GENERAL */
+    /* Main */
+    --bg: #B55088;
+    --fg: #FFFFFF;
+
+    /* Tabs */
+    --tab-background: #007F7F;
+    --tab-suspended: #0F6365;
+    --visible-tab: #FF5CE1;
+    --tab-crashed: #E43B44;
+
+    /* Modes */
+    --mode-normal-fg: #FFFFFF;
+    --mode-insert-bg: #FFFFFF;
+    --mode-insert-fg: #3E8948;
+    --mode-command-bg: #FFFFFF;
+    --mode-command-fg: #E43B44;
+    --mode-explore-bg: #FFFFFF;
+    --mode-explore-fg: #007F7F;
+    --mode-search-bg: #FFFFFF;
+    --mode-search-fg: #FEAE34;
+    --mode-follow-bg: #FFFFFF;
+    --mode-follow-fg: #FF5CE1;
+    --mode-pointer-bg: #FF5CE1;
+    --mode-pointer-fg: #FFFFFF;
+    --mode-visual-bg: #8787FF;
+    --mode-visual-fg: #FFFFFF;
+
+    /* Urls */
     --url-default: #ddd;
     --url-search: #f80;
     --url-searchwords: #f5f;
-    --url-url: #08f;
+    --url-url: #FFAFFF;
     --url-suggest: #0c0;
     --url-file: #fb0;
-    --suggestions-border: #eee;
-    --suggestions-bg: #ddd;
-    --suggestions-selected: #fff;
-    --suggestions-url: #08f;
+
+    /* Explore */
+    --suggestions-border: #0F6365;
+    --suggestions-bg: #007F7F;
+    --suggestions-searchwords: #FFFFFF;
+    --suggestions-selected: #FF5CE1;
+    --suggestions-url: #181426;
     --suggestions-file: #f80;
-    --notification-border: #aaa;
-    --notification-date: #777;
-    --notification-permission: #777;
-    --notification-error: #f33;
-    --notification-warning: #f80;
+
+    /* Notifications */
+    --notification-border: #FF5CE1;
+    --notification-date: #B55088;
+    --notification-permission: #B55088;
+    --notification-error: #E43B44;
+    --notification-warning: #FEAE34;
     --notification-info: #08f;
-    --notification-success: #0c0;
-    /* special pages */
-    --link-color: #08f;
-    --link-underline: #0df;
+    --notification-success: #34703E;
+    
+    /* SPECIAL PAGES */
+    /* Main */
+    --link-color: #FFAFFF;
+    --link-underline: #FFAFFF;
     --scrollbar-bg: #fff;
     --scrollbar-thumb: #aaa7;
     --button-disabled: #777;
     --code-fg: #000;
     --code-bg: #fff;
+    --code-command: #181426;
     --special-page-element-bg: #ddd;
     --special-page-element-border: #aaa;
     --input-unfocused: #aaa;
     --input-focused: #666;
     --download-progress-fg: #fff;
     --download-progress-bg: #eee;
+
+    /* Help */
+    --helppage-h1: #0F6365;
+    --helppage-h2: #181426;
+    --helppage-h3: #FFFFFF;
     --helppage-countable: #0c0;
-    /* sourceviewer */
-    --syntax-keyword: #d45;
+    
+
+    /* SOURCEVIEWER */
+    --syntax-keyword: #0F6365;
     --syntax-entity: #74c;
     --syntax-constant: #06c;
     --syntax-string: #036;

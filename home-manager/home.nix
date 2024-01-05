@@ -166,6 +166,7 @@ in
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
+    ".vieb/colors/compactCustom.css".source = ./compactCustom.css;
     ".vieb/viebrc".text = concatStringsSep "\n" (
         mapAttrsToList (n: v:
           if isBool v then
@@ -229,8 +230,7 @@ in
           "V" = "<:tabnew><openFromClipboard>";  # P sub
         } ++ mapAttrsToList (n: v: "${n} ${v}")
           {
-            #"colorscheme" = builtins.readFile ./compactCustom.css;
-            "colorscheme" = "compact";
+            "colorscheme" = "compactCustom";
           });
   };
 
