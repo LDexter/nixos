@@ -17,85 +17,105 @@
 */
 /* colors */
 :root {
+    /* VARIABLES */
+    --light: #FFFFFF;
+    --dark: #000000;
+    --pri-fair: #FFAFFF;
+    --pri-light: #FF5CE1;
+    --pri-dark: #B55088;
+    --sec-light: #007F7F;
+    --sec-dark: #0F6365;
+    --ter-light: #8787FF;
+    --ter-dark: #181426;
+    --succ-fair: #AFE1AF;
+    --succ-light: #3E8948;
+    --succ-dark: #34703E;
+    --warn-fair: #FFFFAF;
+    --warn-light: #FEAE34;
+    --err-fair: #FFAFAF;
+    --err-light: #E43B44;
+    --err-dark: #22020A;
+    
     /* GENERAL */
     /* Main */
-    --bg: #B55088;
-    --fg: #FFFFFF;
+    --bg: var(--pri-dark);
+    --fg: var(--light);
 
     /* Tabs */
-    --tab-background: #007F7F;
-    --tab-suspended: #0F6365;
-    --visible-tab: #FF5CE1;
-    --tab-crashed: #E43B44;
+    --tab-background: var(--sec-light);
+    --tab-suspended: var(--sec-dark);
+    --visible-tab: var(--pri-light);
+    --tab-crashed: var(--err-light);
 
     /* Modes */
-    --mode-normal-fg: #FFFFFF;
-    --mode-insert-bg: #FFFFFF;
-    --mode-insert-fg: #3E8948;
-    --mode-command-bg: #FFFFFF;
-    --mode-command-fg: #E43B44;
-    --mode-explore-bg: #FFFFFF;
-    --mode-explore-fg: #007F7F;
-    --mode-search-bg: #FFFFFF;
-    --mode-search-fg: #FEAE34;
-    --mode-follow-bg: #FFFFFF;
-    --mode-follow-fg: #FF5CE1;
-    --mode-pointer-bg: #FF5CE1;
-    --mode-pointer-fg: #FFFFFF;
-    --mode-visual-bg: #8787FF;
-    --mode-visual-fg: #FFFFFF;
+    --mode-normal-fg: var(--light);
+    --mode-insert-bg: var(--light);
+    --mode-insert-fg: var(--succ-light);
+    --mode-command-bg: var(--light);
+    --mode-command-fg: var(--err-light);
+    --mode-explore-bg: var(--light);
+    --mode-explore-fg: var(--sec-light);
+    --mode-search-bg: var(--light);
+    --mode-search-fg: var(--warn-light);
+    --mode-follow-bg: var(--light);
+    --mode-follow-fg: var(--pri-light);
+    --mode-pointer-bg: var(--pri-light);
+    --mode-pointer-fg: var(--light);
+    --mode-visual-bg: var(--ter-light);
+    --mode-visual-fg: var(--light);
 
     /* Urls */
     --url-default: #ddd;
-    --url-search: #f80;
-    --url-searchwords: #f5f;
-    --url-url: #FFAFFF;
+    --url-search: var(--warn-light);
+    --url-searchwords: var(--light);
+    --url-url: var(--url-light);
     --url-suggest: #0c0;
     --url-file: #fb0;
 
     /* Explore */
-    --suggestions-border: #0F6365;
-    --suggestions-bg: #007F7F;
-    --suggestions-searchwords: #FFFFFF;
-    --suggestions-selected: #FF5CE1;
-    --suggestions-url: #181426;
-    --suggestions-file: #f80;
+    --suggestions-border: var(--sec-dark);
+    --suggestions-bg: var(--sec-light);
+    --suggestions-searchwords: var(--light);
+    --suggestions-selected: var(--pri-light);
+    --suggestions-url: var(--ter-dark);
+    --suggestions-file: #fb0;
 
     /* Notifications */
-    --notification-border: #FF5CE1;
-    --notification-date: #B55088;
-    --notification-permission: #B55088;
-    --notification-error: #E43B44;
-    --notification-warning: #FEAE34;
-    --notification-info: #08f;
-    --notification-success: #34703E;
-    
+    --notification-dialog: var(--sec-dark);
+    --notification-border: var(--pri-light);
+    --notification-date: var(--light);
+    --notification-permission: var(--light);
+    --notification-info: var(--light);
+    --notification-success: var(--pri-fair);
+    --notification-warning: var(--warn-fair);
+    --notification-error: var(--err-dark);
+
     /* SPECIAL PAGES */
     /* Main */
-    --link-color: #FFAFFF;
-    --link-underline: #FFAFFF;
-    --scrollbar-bg: #fff;
-    --scrollbar-thumb: #aaa7;
-    --button-disabled: #777;
-    --code-fg: #000;
-    --code-bg: #fff;
-    --code-command: #181426;
+    --link-color: var(--pri-fair);
+    --link-underline: var(--pri-fair);
+    --scrollbar-bg: var(--pri-fair);
+    --scrollbar-thumb: var(--light);
+    --button-disabled: var(--sec-dark);
+    --code-fg: var(--dark);
+    --code-bg: var(--light);
+    --code-command: var(--ter-dark);
     --special-page-element-bg: #ddd;
     --special-page-element-border: #aaa;
     --input-unfocused: #aaa;
     --input-focused: #666;
-    --download-progress-fg: #fff;
+    --download-progress-fg: var(--light);
     --download-progress-bg: #eee;
 
     /* Help */
-    --helppage-h1: #0F6365;
-    --helppage-h2: #181426;
-    --helppage-h3: #FFFFFF;
+    --helppage-h1: var(--ter-light);
+    --helppage-h2: var(--ter-dark);
+    --helppage-h3: var(--light);
     --helppage-countable: #0c0;
     
 
     /* SOURCEVIEWER */
-    --syntax-keyword: #0F6365;
+    --syntax-keyword: var(--sec-dark);
     --syntax-entity: #74c;
     --syntax-constant: #06c;
     --syntax-string: #036;
