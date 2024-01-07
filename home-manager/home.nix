@@ -222,9 +222,13 @@ in
           "," = "<previousSearchMatch>";         # N sub
           "s" = "<toExploreMode>";               # e sub ("s" for <p.moveToMouse> would suggest I use a mouse)
           "S" = "<:tabnew><toExploreMode>";      # E sub
-          "tO" = "<moveTabEnd>";                 # O sub (no "o" default)
+          "mo" = "<moveTabEnd>";                 # O sub (no "o" default)
+          "my" = "<moveTabStart>";               # I sub
+          "mn" = "<moveTabForward>";             # In line with mo
+          "me" = "<moveTabBackward>";            # In line with my
           "FS" = "<startFollowNewSplit>";        # S sub
           "FV" = "<startFollowNewVerSplit>";     # V sub
+          "FT" = "<startFollowNewTab>";          # F sub
           "p" = "<p.start>";                     # v sub (a little phonetics balance for messing with e)
           "v" = "<openFromClipboard>";           # p sub
           "V" = "<:tabnew><openFromClipboard>";  # P sub
