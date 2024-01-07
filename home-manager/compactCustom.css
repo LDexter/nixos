@@ -19,22 +19,29 @@
 :root {
     /* VARIABLES */
     --light: #FFFFFF;
+    --trans: #0000001f;
     --dark: #000000;
     --pri-fair: #FFAFFF;
     --pri-light: #FF5CE1;
+    --pri-trans: #FF5CE11F;
     --pri-dark: #B55088;
+    --sec-fair: #99CCCC;
     --sec-light: #007F7F;
+    --sec-trans: #0f636524;
     --sec-dark: #0F6365;
     --ter-light: #8787FF;
+    --ter-trans: #18142624;
     --ter-dark: #181426;
     --succ-fair: #AFE1AF;
     --succ-light: #3E8948;
+    --succ-trans: #3E894817;
     --succ-dark: #34703E;
     --warn-fair: #FFFFAF;
     --warn-light: #FEAE34;
     --err-fair: #FFAFAF;
     --err-light: #E43B44;
     --err-dark: #22020A;
+
     
     /* GENERAL */
     /* Main */
@@ -46,6 +53,7 @@
     --tab-suspended: var(--sec-dark);
     --visible-tab: var(--pri-light);
     --tab-crashed: var(--err-light);
+    --tab-scrollbar: var(--pri-fair);
 
     /* Modes */
     --mode-normal-fg: var(--light);
@@ -65,12 +73,14 @@
     --mode-visual-fg: var(--light);
 
     /* Urls */
-    --url-default: #ddd;
+    --url-default: var(--light);
     --url-search: var(--warn-light);
     --url-searchwords: var(--light);
-    --url-url: var(--url-light);
-    --url-suggest: #0c0;
-    --url-file: #fb0;
+    --url-url: var(--pri-fair);
+    --url-suggest: var(--sec-light);
+    --url-file: var(--warn-light);
+    --url-hover-bg: var(--pri-light);
+    --url-hover-fg: var(--light);
 
     /* Explore */
     --suggestions-border: var(--sec-dark);
@@ -78,7 +88,7 @@
     --suggestions-searchwords: var(--light);
     --suggestions-selected: var(--pri-light);
     --suggestions-url: var(--ter-dark);
-    --suggestions-file: #fb0;
+    --suggestions-file: var(--warn-light);
 
     /* Notifications */
     --notification-dialog: var(--sec-dark);
@@ -90,6 +100,32 @@
     --notification-warning: var(--warn-fair);
     --notification-error: var(--err-dark);
 
+    /* Follow */
+    --url-invalid: var(--err-light);
+    --follow-text: var(--dark);
+    --follow-url-bg: var(--pri-fair);
+    --follow-url-border: var(--pri-light);
+    --follow-url-hover: var(--pri-trans);
+    --follow-click-bg: var(--sec-light);
+    --follow-click-border: var(--sec-dark);
+    --follow-click-hover: var(--sec-trans);
+    --follow-insert-bg: var(--succ-fair);
+    --follow-insert-border: var(--succ-light);
+    --follow-insert-hover: var(--succ-trans);
+    --follow-onclick-bg: var(--pri-fair);
+    --follow-onclick-border: var(--pri-light);
+    --follow-onclick-hover: var(--pri-trans);
+    --follow-media-bg: var(--ter-light);
+    --follow-media-border: var(--ter-dark);
+    --follow-media-hover: var(--ter-trans);
+    --follow-image-bg: var(--ter-light);
+    --follow-image-border: var(--ter-dark);
+    --follow-image-hover: var(--ter-trans);
+    --follow-other-bg: var(--light);
+    --follow-other-border: var(--dark);
+    --follow-other-hover: var(--trans);
+
+    
     /* SPECIAL PAGES */
     /* Main */
     --link-color: var(--pri-fair);
@@ -97,21 +133,22 @@
     --scrollbar-bg: var(--pri-fair);
     --scrollbar-thumb: var(--light);
     --button-disabled: var(--sec-dark);
-    --code-fg: var(--dark);
     --code-bg: var(--light);
-    --code-command: var(--ter-dark);
-    --special-page-element-bg: #ddd;
-    --special-page-element-border: #aaa;
-    --input-unfocused: #aaa;
-    --input-focused: #666;
+    --code-fg: var(--sec-dark);
+    --code-command: var(--err-light);
+    --placeholder-text: var(--pri-fair);
+    --special-page-element-bg: var(--sec-light);
+    --special-page-element-border: var(--sec-dark);
+    --input-unfocused: var(--sec-dark);
+    --input-focused: var(--sec-light);
     --download-progress-fg: var(--light);
-    --download-progress-bg: #eee;
+    --download-progress-bg: var(--pri-fair);
 
     /* Help */
     --helppage-h1: var(--ter-light);
     --helppage-h2: var(--ter-dark);
     --helppage-h3: var(--light);
-    --helppage-countable: #0c0;
+    --helppage-countable: var(--sec-light);
     
 
     /* SOURCEVIEWER */
