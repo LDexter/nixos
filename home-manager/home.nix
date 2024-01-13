@@ -137,7 +137,7 @@ in
 
     # I need my videos and music local thanks
     yt-dlp
-    ytmdl
+    #ytmdl - Broken on 12/1/2024 with distutils.errors.DistutilsError
     ffmpeg-full
     picard
 
@@ -278,13 +278,30 @@ in
       estart="systemctl --user start emacs.service";
       eopen="emacsclient --create-frame";
       ereload="systemctl --user daemon-reload";
-      ekill="emacsclient -e '(kill-emacs)'";
+      estop="emacsclient -e '(kill-emacs)'";
       epkgs="nix-env -f '<nixpkgs>' -qaP -A emacsPackages";
 
       # LTE networking
       ltestart="sudo nmcli c add type gsm ifname '*' con-name NixPad-CON apn cdc-wdm0";
       lteon="nmcli r wwan on";
       lteoff="nmcli r wwan off";
+
+      # Wireguard controls
+      wgstart="sudo systemctl start wg-quick-wg0";
+      wgstop="sudo systemctl stop wg-quick-wg0";
+
+      # Discord RPC restart - until I figure out ZSH scripting
+      rpc="systemctl --user restart mpd-discord-rpc";
+    };
+
+    # More advanced Z shell scripts - WIP
+    zsh.enable = true;
+    zsh.shellAliases = {
+      # Vesktop with RPC restart
+      vesktop = "${pkgs.writeShellScript "vesktop" ''
+        vencorddesktop &
+        systemctl --user restart mpd-discord-rpc &
+      ''}";
     };
 
     # Rando numbers go brrr
