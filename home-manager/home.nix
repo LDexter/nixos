@@ -90,7 +90,7 @@ in
     abiword
 
     # Science can be fun
-    the-powder-toy
+    #the-powder-toy # Breaking changes on 18/1/24 update
 
     # Maximum privacy, cus ig that's the linux way
     tor
@@ -150,6 +150,9 @@ in
 
     # Coolest clock around!
     peaclock
+
+    # CLI for the Quantum Mechanical Keyboard firmware
+    qmk
   ];
   
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
