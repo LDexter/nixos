@@ -189,8 +189,37 @@ in
           useragent = "%default";
           userscript = true;
           vimcommand = ''"emacsclient -c"'';
+          favoritepages = builtins.toJSON
+            [
+              "youtube.com"
+              "github.com"
+              "thevirt.ru"
+              "nix-community.github.io/home-manager/options.xhtml"
+            ];
+          
+          searchwords = builtins.toJSON
+            {
+              # Standard search
+              w = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go&ns0=1";
+              aw = "https://wiki.archlinux.org/?search=%s";
+              nw = "https://nixos.wiki/index.php?search=%s";
+              np = "https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query=%s";
+              gh = "https://github.com/search?q=%s";
+              yt = "https://www.youtube.com/results?search_query=%s";
+              ya = "https://yandex.com/images/search?text=%s";
+              imdb = "imdb.com/find?q=%s";
+              
+              # Japanese/English
+              jpen = "https://www.deepl.com/translator#ja/en/%s";
+              enjp = "https://www.deepl.com/translator#en/ja/%s";
+              # Russian/English
+              ruen = "https://www.deepl.com/translator#ru/en/%s";
+              enru = "https://www.deepl.com/translator#en/ru/%s";
+            };
+          
         } ++ map (x: "unmap ${x}") [
         ] ++ mapAttrsToList (n: v:
+          # Normal Mode
           "nmap ${n} ${v}"
         ) {
           # Alternatives for Workman layout while maintaining QWERTY backwards compatibility
@@ -218,24 +247,81 @@ in
           "cs" = "<p.copyText>";                   # ys sub
           "ct" = "<pageTitleToClipboard>";         # yt sub
           "cc" = "<pageToClipboard>";              # yy sub
-          "c" = "<pageToClipboard>";               # Backup if no key code
 
           # Everything else
-          "." = "<nextSearchMatch>";             # n sub
-          "," = "<previousSearchMatch>";         # N sub
-          "s" = "<toExploreMode>";               # e sub ("s" for <p.moveToMouse> would suggest I use a mouse)
-          "S" = "<:tabnew><toExploreMode>";      # E sub
-          "mo" = "<moveTabEnd>";                 # O sub (no "o" default)
-          "my" = "<moveTabStart>";               # I sub
-          "mn" = "<moveTabForward>";             # In line with mo
-          "me" = "<moveTabBackward>";            # In line with my
-          "FS" = "<startFollowNewSplit>";        # S sub
-          "FV" = "<startFollowNewVerSplit>";     # V sub
-          "FT" = "<startFollowNewTab>";          # F sub
-          "p" = "<p.start>";                     # v sub (a little phonetics balance for messing with e)
-          "v" = "<openFromClipboard>";           # p sub
-          "V" = "<:tabnew><openFromClipboard>";  # P sub
-        } ++ mapAttrsToList (n: v: "${n} ${v}")
+          "." = "<nextSearchMatch>";               # n sub
+          "," = "<previousSearchMatch>";           # N sub
+          "s" = "<toExploreMode>";                 # e sub ("s" for <p.moveToMouse> would suggest I use a mouse)
+          "S" = "<:tabnew><toExploreMode>";        # E sub
+          "mo" = "<moveTabEnd>";                   # O sub (no "o" default)
+          "my" = "<moveTabStart>";                 # I sub
+          "mn" = "<moveTabForward>";               # In line with mo
+          "me" = "<moveTabBackward>";              # In line with my
+          "FS" = "<startFollowNewSplit>";          # S sub
+          "FV" = "<startFollowNewVerSplit>";       # V sub
+          "FT" = "<startFollowNewTab>";            # F sub
+          "p" = "<p.start>";                       # v sub (a little phonetics balance for messing with e)
+          "v" = "<openFromClipboard>";             # p sub
+          "V" = "<:tabnew><openFromClipboard>";    # P sub
+        } ++ mapAttrsToList (n: v:
+          # Pointer Mode
+          "pmap ${n} ${v}"
+        ) {
+          # Workman alternatives
+          # Movement
+          "y" = "<p.moveLeft>";        # h alt
+          "n" = "<p.moveDown>";        # j alt
+          "e" = "<p.moveUp>";          # k alt
+          "o" = "<p.moveRight>";       # l alt
+
+          # Fast movement
+          "Y" = "<p.moveFastLeft>";    # H alt
+          "N" = "<p.moveFastDown>";    # J alt
+          "E" = "<p.moveFastUp>";      # K alt
+          "O" = "<p.moveFastRight>";   # L alt
+
+          # Substitutions
+          # Even more yank
+          "cI" = "<p.copyImageBuffer>";            # yI sub
+          "cT" = "<p.copyPageTitle>";              # yT sub
+          "ca" = "<p.copyAudio>";                  # ya sub
+          "cf" = "<p.copyFrame>";                  # yf sub
+          "ci" = "<p.copyImage>";                  # yi sub
+          "cl" = "<p.copyLink>";                   # yl sub
+          "ct" = "<p.copyTitleAttr>";              # yt sub
+          "cv" = "<p.copyVideo>";                  # yv sub
+          "cy" = "<p.copyLink>";                   # yy sub
+          
+        } ++ [  # Unmapping
+          # Normal Mode
+          "nunmap yR<Any>"          # unmap <pageRSSLinkToClipboard>
+          "nunmap yRL"              # unmap <pageRSSLinksList>
+          "nunmap ye"               # unmap <pageToClipboardEmacs>
+          "nunmap yf"               # unmap <startFollowCopyLink>
+          "nunmap yh"               # unmap <pageToClipboardHTML>
+          "nunmap ym"               # unmap <pageToClipboardMarkdown>
+          "nunmap yr"               # unmap <pageToClipboardRST>
+          "nunmap ys"               # unmap <p.copyText>
+          "nunmap yt"               # unmap <pageTitleToClipboard>
+          "nunmap yy"               # unmap <pageToClipboard>
+
+          # Pointer Mode
+          "punmap oa"               # unmap <p.openAudio>
+          "punmap of"               # unmap <p.openFrame>
+          "punmap oi"               # unmap <p.openImage>
+          "punmap ol"               # unmap <p.openLink>
+          "punmap oo"               # unmap <p.openLink>
+          "punmap ov"               # unmap <p.openVideo>
+          "punmap yI"               # unmap <p.copyImageBuffer>
+          "punmap yT"               # unmap <p.copyPageTitle>
+          "punmap ya"               # unmap <p.copyAudio>
+          "punmap yf"               # unmap <p.copyFrame>
+          "punmap yi"               # unmap <p.copyImage>
+          "punmap yl"               # unmap <p.copyLink>
+          "punmap yt"               # unmap <p.copyTitleAttr>
+          "punmap yv"               # unmap <p.copyVideo>
+          "punmap yy"               # unmap <p.copyLink>
+        ] ++ mapAttrsToList (n: v: "${n} ${v}")
           {
             "colorscheme" = "compactCustom";
           });
