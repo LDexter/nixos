@@ -130,6 +130,7 @@ in
 
     # Web development
     nodejs_20
+    nodePackages.pnpm
     sass
 
     # Outta here with your normie Firefox!
@@ -186,15 +187,18 @@ in
           nativetheme = "dark";
           darkreader = true;
           notificationforpermissions = "all";
+          permissionhid = "allow";
           useragent = "%default";
           userscript = true;
           vimcommand = ''"emacsclient -c"'';
           favoritepages = builtins.toJSON
             [
-              "youtube.com"
               "github.com"
-              "thevirt.ru"
+              "youtube.com"
+              "myanimelist.net"
+              "nixos.org/manual/nix/stable/language"
               "nix-community.github.io/home-manager/options.xhtml"
+              "thevirt.ru"
             ];
           
           searchwords = builtins.toJSON
@@ -203,10 +207,12 @@ in
               w = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go&ns0=1";
               aw = "https://wiki.archlinux.org/?search=%s";
               nw = "https://nixos.wiki/index.php?search=%s";
+              nr = "https://nixos.org/manual/nix/stable/language/?search=%s";
               np = "https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query=%s";
               gh = "https://github.com/search?q=%s";
               yt = "https://www.youtube.com/results?search_query=%s";
               ya = "https://yandex.com/images/search?text=%s";
+              mal = "https://myanimelist.net/search/all?q=%s&cat=all";
               imdb = "imdb.com/find?q=%s";
               
               # Japanese/English
