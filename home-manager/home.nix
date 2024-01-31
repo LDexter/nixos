@@ -400,7 +400,7 @@ in
     };
 
     # Rando numbers go brrr
-    htop.enable = true;
+    btop.enable = true;
     
     # The lifestyle
     emacs = {
