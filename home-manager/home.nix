@@ -136,6 +136,9 @@ in
     # Outta here with your normie Firefox!
     vieb
 
+    # MFW compatibility :(
+    firefox
+
     # I need my videos and music local thanks
     yt-dlp
     #ytmdl - Broken on 12/1/2024 with distutils.errors.DistutilsError
@@ -154,6 +157,7 @@ in
 
     # CLI for the Quantum Mechanical Keyboard firmware
     qmk
+    gnumake
   ];
   
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -530,6 +534,9 @@ in
 
     # Simple image viewing!
     feh.enable = true;
+
+    # For recording my shenanigans
+    obs-studio.enable = true;
 
     # Multi-display configuration
     # Disabled until needs arise
