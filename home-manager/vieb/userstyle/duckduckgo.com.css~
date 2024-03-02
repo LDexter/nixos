@@ -1,0 +1,5 @@
+:root {
+    background-color: pink;
+}
+
+::-webkit-scrollbar {display: none;}

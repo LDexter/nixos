@@ -1,0 +1,175 @@
+/* VARIABLES
+    --light: #FFFFFF;
+    --trans: #0000001f;
+    --dark: #000000;
+    --pri-fair: #FFAFFF;
+    --pri-light: #FF5CE1;
+    --pri-trans: #FF5CE11F;
+    --pri-dark: #B55088;
+    --sec-fair: #99CCCC;
+    --sec-light: #007F7F;
+    --sec-trans: #0f636524;
+    --sec-dark: #004C4C;
+    --ter-light: #8787FF;
+    --ter-trans: #18142624;
+    --ter-dark: #181426;
+    --succ-fair: #AFE1AF;
+    --succ-light: #3E8948;
+    --succ-trans: #3E894817;
+    --succ-dark: #34703E;
+    --warn-fair: #FFFFAF;
+    --warn-light: #FEAE34;
+    --err-fair: #FFAFAF;
+    --err-light: #E43B44;
+    --err-dark: #22020A;
+*/
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, "JetBrains Mono", monospace;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: #B55088;
+    border-bottom: 5px solid #FFAFFF;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+/*
+#disk {
+    margin-left: 5px;
+}*/
+
+#cpu,
+#memory,
+#temperature,
+#battery,
+#network,
+#clock,
+#tray {
+    padding: 0 10px;
+    color: white;
+    background-color: #007F7F;
+    border-style: solid;
+    border-width: 0 2px 0 0;
+    border-color: #FF5CE1;
+    border-bottom: 5px solid #99CCCC;
+}
+
+#window,
+#workspaces,
+#disk {
+    margin: 0 8px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cpu.warning, #memory.warning, #battery.warning, #network.wifi {
+    border-bottom-color: #FEAE34;
+}
+#cpu.critical, #memory.critical, #temperature.critical, #battery.critical, #network.disconnected {
+    border-bottom-color: #E43B44;
+}
+#battery.full, #battery.charging, #battery.plugged, #network.ethernet {
+    border-bottom-color: #3E8948;
+}
+
+#clock {
+    border-right: 0px;
+}
+
+#tray {
+    background-color: #007F7F;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#mpd {
+    background-color: #66cc99;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}

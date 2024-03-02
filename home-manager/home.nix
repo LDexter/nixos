@@ -33,6 +33,14 @@ in
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
+
+  # Ensuring cursor theme loads in Hyprland
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.catppuccin-cursors.lattePink;
+    name = "Catppuccin-Latte-Pink-Cursors";
+    size = 32;
+  };
   
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -58,6 +66,9 @@ in
     neofetch
 
     # My ThinkPad can only handle so much cord bloat... Also themes and plugins!
+    armcord
+
+    # Less performance-focused client for gaming rig
     vesktop
 
     # Never have too many mods
@@ -158,6 +169,26 @@ in
     # CLI for the Quantum Mechanical Keyboard firmware
     qmk
     gnumake
+
+    # Console copy
+    xclip
+    
+    # Rust
+    rustup
+    cargo-generate
+    trunk
+    gcc
+
+    # Hyprland utilities
+    grim
+    slurp
+    wl-clipboard
+    hyprpicker
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    inputs.hyprland-contrib.packages.${pkgs.system}.shellevents
+    inputs.hyprland-contrib.packages.${pkgs.system}.try_swap_workspace
+    inputs.hyprland-contrib.packages.${pkgs.system}.scratchpad
+    inputs.hyprland-contrib.packages.${pkgs.system}.hdrop
   ];
   
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -175,6 +206,8 @@ in
     # '';
 
     ".vieb/colors/compactCustom.css".source = ./compactCustom.css;
+    ".vieb/userscript/".source = ./vieb/userscript;
+    ".vieb/userstyle/".source = ./vieb/userstyle;
     ".vieb/viebrc".text = concatStringsSep "\n" (
         mapAttrsToList (n: v:
           if isBool v then
@@ -194,6 +227,7 @@ in
           permissionhid = "allow";
           useragent = "%default";
           userscript = true;
+          userstyle = true;
           vimcommand = ''"emacsclient -c"'';
           favoritepages = builtins.toJSON
             [
@@ -439,6 +473,7 @@ in
 
           # Language packages
           epkgs.nix-mode
+          epkgs.rustic
 
           # Web development
           epkgs.react-snippets
@@ -538,9 +573,118 @@ in
     # For recording my shenanigans
     obs-studio.enable = true;
 
-    # Multi-display configuration
-    # Disabled until needs arise
-    #autorandr.enable = true;
+    # Hyprland wallpaper
+    wpaperd = {
+      enable = true;
+      settings = {
+        eDP-1 = {
+          path = "~/nixos/home-manager/hyprland/assets/wall2.png";
+          apply-shadow = true;
+        };
+        HDMI-A-1 = {
+          path = "~/nixos/home-manager/hyprland/assets/wall_anime_8K.png";
+          apply-shadow = true;
+        };
+        DP-2 = {
+          path = "~/nixos/home-manager/hyprland/assets/wall_anime2_8K.png";
+          apply-shadow = true;
+        };
+      };
+    };
+
+    # Hyprland status bar
+    waybar = {
+      enable = true;
+      style = ./hyprland/style.css;
+      settings = {
+        mainBar = {
+          layer = "top";
+          position = "top";
+          height = 34;
+          output = [
+            "eDP-1"
+            "HDMI-A-1"
+            "DP-2"
+          ];
+
+          modules-left = ["hyprland/workspaces" "user" "disk"];
+          modules-center = ["hyprland/window"];
+          modules-right = ["cpu" "memory" "temperature" "battery" "network" "clock" "tray"];
+
+          "hyprland/workspaces" = {
+            format = "{name}";
+            icon = true;
+          };
+
+          "user" = {
+            format = "as bano 🍌 | up {work_H} hrs >:3c";
+          };
+
+          "disk" = {
+            interval = 30;
+            format = "| {percentage_used}% capacity UwU";
+            path = "/";
+          };
+
+          "hyprland/window" = {
+            format = "messin wit {class} | on {title} | NixOwOs btw  ";
+          };
+
+          "cpu" = {
+            states = {
+              good = 0;
+              warning = 40;
+              critical = 80;
+            };
+            format = "{usage}% ";
+            tooltip = false;
+          };
+
+          "memory" = {
+            states = {
+              good = 0;
+              warning = 40;
+              critical = 80;
+            };
+            format = "{} ";
+          };
+
+          "temperature" = {
+            # thermal-zone = 2;
+            # hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+            critical-threshold = 70;
+            format-critical = "{temperatureC}°C ";
+            format = "{temperatureC}°C ";
+          };
+
+          "battery" = {
+            states = {
+              full = 100;
+              good = 70;
+              warning = 30;
+              critical = 10;
+            };
+            format-charging = "{capacity}% ";
+            format-plugged = "{capacity}% ";
+            format-full = "{time} {capacity}% ";
+            format-good = "{time} {capacity}% ";
+            format-warning = "{time} {capacity}% ";
+            format-critical = "{time} {capacity}% ";
+          };
+
+          "network" = {
+            format-wifi = "{signalStrength}% ";
+            format-ethernet = "eth ";
+            format-disconnected = "dc ";
+          };
+          
+          "clock" = {
+            format = "{:%I:%M   | %d/%m/%Y }";
+            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          };
+        };
+      };
+    };
   };
   
   # Ensuring gpg has access to pinentry
@@ -563,6 +707,74 @@ in
         details = "Weebing to $title";
         state = "By $artist, from $album";
       };
+    };
+  };
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+
+    extraConfig = ''
+      monitor = DP-2, highres, 0x0, 1
+      monitor = HDMI-A-1, highres, 1680x0, 1
+      monitor = eDP-1, highres, 3600x0, 1
+
+      exec-once=wpaperd
+      exec-once=waybar
+      exec-once=kitty
+    '';
+
+    settings = {
+      "$mod" = "SUPER";
+      general = {
+        "border_size" = 3;
+        "col.active_border" = "rgb(FFAFFF)";
+        "col.inactive_border" = "rgb(007F7F)";
+        "no_focus_fallback" = true;
+      };
+      decoration = {
+        "active_opacity" = 0.9;
+        "inactive_opacity" = 0.9;
+        blur = {
+          "noise" = 0.1;
+        };
+      };
+      bind =
+        [
+          # Global actions
+          "$mod, Q, killactive"
+          "$mod, Tab, cyclenext"
+          "$mod, F, fullscreen, 0"
+          "$mod, S, exec, grimblast --cursor copy output"
+          "$mod SHIFT, S, exec, grimblast copy area"
+
+          # Workspace motions
+          "$mod, Y, movewindow, l"
+          "$mod, N, workspace, -1"
+          "$mod, E, workspace, +1"
+          "$mod, O, movewindow, r"
+
+          # Program specific actions
+          "$mod, Return, exec, kitty"
+          "$mod, H, exec, emacsclient --create-frame ~/nixos/home-manager/home.nix"
+          "$mod, V, exec, vieb"
+          "$mod, P, exec, hyprpicker -n -a"
+        ]
+        ++ (
+          # Workspaces
+          # Binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+          builtins.concatLists (builtins.genList (
+            x: let
+              ws = let
+                c = (x + 1) / 10;
+              in
+                builtins.toString (x + 1 - (c * 10));
+            in [
+              "$mod, ${ws}, workspace, ${toString (x + 1)}"
+              "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+            ]
+          )
+          10)
+        );
     };
   };
   

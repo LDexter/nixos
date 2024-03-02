@@ -19,7 +19,7 @@
 :root {
     /* VARIABLES */
     --light: #FFFFFF;
-    --trans: #0000001f;
+    --trans: #0000001F;
     --dark: #000000;
     --pri-fair: #FFAFFF;
     --pri-light: #FF5CE1;
@@ -27,8 +27,8 @@
     --pri-dark: #B55088;
     --sec-fair: #99CCCC;
     --sec-light: #007F7F;
-    --sec-trans: #0f636524;
-    --sec-dark: #0F6365;
+    --sec-trans: #0F636524;
+    --sec-dark: #004C4C;
     --ter-light: #8787FF;
     --ter-trans: #18142624;
     --ter-dark: #181426;
@@ -146,7 +146,7 @@
 
     /* Help */
     --helppage-h1: var(--ter-light);
-    --helppage-h2: var(--ter-dark);
+    --helppage-h2: var(--sec-dark);
     --helppage-h3: var(--light);
     --helppage-countable: var(--sec-light);
     

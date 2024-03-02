@@ -10,6 +10,11 @@
       ./hardware-configuration.nix
     ];
 
+  # The WM that comes with a waifu!
+  programs.hyprland.enable = true;
+  # Hint at electron apps to use wayland
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";

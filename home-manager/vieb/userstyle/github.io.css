@@ -1,0 +1,68 @@
+::-webkit-scrollbar {display: none;}
+
+:root {
+    /* VARIABLES */
+    --light: #FFFFFF;
+    --trans: #0000001f;
+    --dark: #000000;
+    --pri-fair: #FFAFFF;
+    --pri-light: #FF5CE1;
+    --pri-trans: #FF5CE11F;
+    --pri-dark: #B55088;
+    --sec-fair: #99CCCC;
+    --sec-light: #007F7F;
+    --sec-trans: #0f636524;
+    --sec-dark: #004C4C;
+    --ter-light: #8787FF;
+    --ter-trans: #18142624;
+    --ter-dark: #181426;
+    --succ-fair: #AFE1AF;
+    --succ-light: #3E8948;
+    --succ-trans: #3E894817;
+    --succ-dark: #34703E;
+    --warn-fair: #FFFFAF;
+    --warn-light: #FEAE34;
+    --err-fair: #FFAFAF;
+    --err-light: #E43B44;
+    --err-dark: #22020A;
+}
+
+h5:first-of-type {
+    text-align: right !important;
+    position: revert !important;
+    width: revert !important;
+}
+
+body {
+    background-color: var(--pri-dark) !important;
+    margin-top: 1em !important;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+}
+
+h1 {
+    color: var(--ter-light) !important;
+}
+
+h2 {
+    color: var(--sec-dark) !important;
+}
+
+a:link {
+    color: var(--pri-fair) !important;
+}
+
+.ar {
+    background-color: var(--sec-light) !important;
+}
+
+img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 90%;
+  margin: 20px auto;
+}
+
+p:last-of-type {display: none;}
