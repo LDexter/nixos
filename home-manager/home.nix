@@ -582,6 +582,14 @@ in
     # For recording my shenanigans
     obs-studio.enable = true;
 
+    # Discord CSS injection!
+    discocss = {
+      enable = true;
+      #css = builtins.readFile(./BasicBackground.theme.css);
+      discordAlias = false;
+      discordPackage = pkgs.vesktop;
+    };
+    
     # Hyprland wallpaper
     wpaperd = {
       enable = true;
