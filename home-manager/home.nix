@@ -66,11 +66,8 @@ in
     neofetch
 
     # My ThinkPad can only handle so much cord bloat... Also themes and plugins!
-    armcord
-
-    # Less performance-focused client for gaming rig
     vesktop
-
+    
     # Never have too many mods
     prismlauncher
 
@@ -582,13 +579,13 @@ in
     # For recording my shenanigans
     obs-studio.enable = true;
 
-    # Discord CSS injection!
-    discocss = {
+    # Discord CSS injection!  - Disabled for now due to file access errors
+    /*discocss = {
       enable = true;
-      #css = builtins.readFile(./BasicBackground.theme.css);
+      css = builtins.readFile(./BasicBackground.theme.css);
       discordAlias = false;
       discordPackage = pkgs.vesktop;
-    };
+    };*/
     
     # Hyprland wallpaper
     wpaperd = {
