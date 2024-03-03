@@ -181,6 +181,7 @@ in
     slurp
     wl-clipboard
     hyprpicker
+    wireplumber
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     inputs.hyprland-contrib.packages.${pkgs.system}.shellevents
     inputs.hyprland-contrib.packages.${pkgs.system}.try_swap_workspace
@@ -790,8 +791,4 @@ in
         );
     };
   };
-  
-  # autorandr systemd service
-  # Disabled until needs arise
-  #services.autorandr.enable = true;
 }
