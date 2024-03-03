@@ -537,14 +537,14 @@ in
         visualizer_look = "<#";
         visualizer_color = "220, 213, 206, 199, 162, 125";
 
-        alternative_header_first_line_format = "$b$(54)$aqqu$/a$9 $3{%t}|{%f} $9$(54)$atqq$/a$9$/b";
-        alternative_header_second_line_format = "{{$4$b%a$/b$9}{ - $(106)%b$9}{ ($4%y$9)}}|{%D}";
+        alternative_header_first_line_format = "$b$4$aqqu$/a$9 $3{%t}|{%f} $9$4$atqq$/a$9$/b";
+        alternative_header_second_line_format = "{{$(14)$b%a$/b$9}{ - $(106)%b$9}{ ($(220)%y$9)}}|{%D}";
         
-        main_window_color = 14;
-        alternative_ui_separator_color = 54;
-        window_border_color = 54;
+        main_window_color = 31;
+        alternative_ui_separator_color = 24;
+        window_border_color = 31;
         progressbar_color = 185;
-        song_columns_list_format = "(20)[14]{a} (45)[3]{t|f:Title} (25)[106]{b} (7f)[220]{l}";
+        song_columns_list_format = "(20)[14]{a} (45)[16]{t|f:Title} (25)[106]{b} (7f)[220]{l}";
 
         progressbar_look = "─🌸·";
         playlist_disable_highlight_delay = 0;
