@@ -438,7 +438,16 @@ in
     };
 
     # Rando numbers go brrr
-    btop.enable = true;
+    btop = {
+      enable = true;
+      settings = {
+        color_theme = "kyli0x";
+        theme_background = false;
+        rounded_corners = false;
+        graph_symbol = "block";
+        clock_format = "/user on /host";
+      };
+    };
     
     # The lifestyle
     emacs = {
@@ -729,7 +738,6 @@ in
         "border_size" = 3;
         "col.active_border" = "rgb(FFAFFF)";
         "col.inactive_border" = "rgb(007F7F)";
-        "no_focus_fallback" = true;
       };
       decoration = {
         "active_opacity" = 0.9;
