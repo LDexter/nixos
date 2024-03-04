@@ -542,11 +542,11 @@ in
         visualizer_look = "<#";
         visualizer_color = "220, 213, 206, 199, 162, 125";
 
-        alternative_header_first_line_format = "$b$4$aqqu$/a$9 $3{%t}|{%f} $9$4$atqq$/a$9$/b";
-        alternative_header_second_line_format = "{{$(14)$b%a$/b$9}{ - $(106)%b$9}{ ($(220)%y$9)}}|{%D}";
+        alternative_header_first_line_format = "$b$4$aqqu$/a$9 $(220){%t}|{%f} $9$4$atqq$/a$9$/b";
+        alternative_header_second_line_format = "{{$(14)$b%a$/b$9}{ - $(31)%b$9}{ ($(160)%y$9)}}|{%D}";
         
         main_window_color = 31;
-        alternative_ui_separator_color = 24;
+        alternative_ui_separator_color = 31;
         window_border_color = 31;
         progressbar_color = 185;
         song_columns_list_format = "(20)[14]{a} (45)[220]{t|f:Title} (25)[31]{b} (7f)[160]{l}";
@@ -736,6 +736,23 @@ in
 
   services.dunst = {
     enable = true;
+    settings = {
+      global = {
+        width = 300;
+        height = 300;
+        offset = "30x50";
+        origin = "top-right";
+        progress_bar = true;
+        frame_color = "#eceff1";
+        font = "Droid Sans 9";
+      };
+
+      urgency_normal = {
+        background = "#37474f";
+        foreground = "#eceff1";
+        timeout = 10;
+      };
+    };
   };
   
   wayland.windowManager.hyprland = {
