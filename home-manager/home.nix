@@ -184,6 +184,8 @@ in
     wireplumber
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
+    qt5ct
+    libva
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     inputs.hyprland-contrib.packages.${pkgs.system}.shellevents
     inputs.hyprland-contrib.packages.${pkgs.system}.try_swap_workspace
@@ -547,7 +549,7 @@ in
         alternative_ui_separator_color = 24;
         window_border_color = 31;
         progressbar_color = 185;
-        song_columns_list_format = "(20)[14]{a} (45)[16]{t|f:Title} (25)[106]{b} (7f)[220]{l}";
+        song_columns_list_format = "(20)[14]{a} (45)[220]{t|f:Title} (25)[31]{b} (7f)[160]{l}";
 
         progressbar_look = "─🌸·";
         playlist_disable_highlight_delay = 0;
@@ -602,6 +604,10 @@ in
           path = "~/nixos/home-manager/hyprland/assets/wall_anime_8K.png";
           apply-shadow = true;
         };
+        DP-1 = {
+          path = "~/nixos/home-manager/hyprland/assets/wall_anime2_8K.png";
+          apply-shadow = true;
+        };
         DP-2 = {
           path = "~/nixos/home-manager/hyprland/assets/wall_anime2_8K.png";
           apply-shadow = true;
@@ -621,6 +627,7 @@ in
           output = [
             "eDP-1"
             "HDMI-A-1"
+            "DP-1"
             "DP-2"
           ];
 
@@ -732,17 +739,24 @@ in
   };
   
   wayland.windowManager.hyprland = {
-    enable = true;
+     enable = true;
 
     extraConfig = ''
       monitor = DP-2, highres, 0x0, 1
+      monitor = DP-1, highres, -240x0, 1
       monitor = HDMI-A-1, highres, 1680x0, 1
       monitor = eDP-1, highres, 3600x0, 1
 
-      exec-once=wpaperd
-      exec-once=waybar
-      exec-once=kitty
-      exec-once=dunst
+      exec-once = wpaperd
+      exec-once = waybar
+      exec-once = kitty
+      exec-once = dunst
+
+      env = LIBVA_DRIVER_NAME, nvidia
+      env = XDG_SESSION_TYPE, wayland
+      env = GBM_BACKEND, nvidia-drm
+      env = __GLX_VENDOR_LIBRARY_NAME, nvidia
+      env = WLR_NO_HARDWARE_CURSORS, 1
     '';
 
     settings = {
