@@ -182,6 +182,8 @@ in
     wl-clipboard
     hyprpicker
     wireplumber
+    libsForQt5.qt5.qtwayland
+    qt6.qtwayland
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     inputs.hyprland-contrib.packages.${pkgs.system}.shellevents
     inputs.hyprland-contrib.packages.${pkgs.system}.try_swap_workspace
@@ -587,7 +589,7 @@ in
       discordAlias = false;
       discordPackage = pkgs.vesktop;
     };*/
-    
+
     # Hyprland wallpaper
     wpaperd = {
       enable = true;
@@ -725,6 +727,10 @@ in
     };
   };
 
+  services.dunst = {
+    enable = true;
+  };
+  
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -736,6 +742,7 @@ in
       exec-once=wpaperd
       exec-once=waybar
       exec-once=kitty
+      exec-once=dunst
     '';
 
     settings = {
