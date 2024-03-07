@@ -738,18 +738,20 @@ in
     enable = true;
     settings = {
       global = {
+        follow = "mouse";
         width = 300;
         height = 300;
-        offset = "30x50";
+        offset = "44x50";
         origin = "top-right";
         progress_bar = true;
-        frame_color = "#eceff1";
-        font = "Droid Sans 9";
+        progress_bar_height = 20;
+        frame_color = "#FFAFFF";
+        font = "JetBrains Mono 11";
       };
 
       urgency_normal = {
-        background = "#37474f";
-        foreground = "#eceff1";
+        background = "#B55088";
+        foreground = "#FFFFFF";
         timeout = 10;
       };
     };
@@ -790,6 +792,12 @@ in
           "noise" = 0.1;
         };
       };
+      # Volume control with optional press and hold
+      binde =
+        [
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+"
+          ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%-"
+        ];
       bind =
         [
           # Global actions
