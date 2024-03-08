@@ -225,8 +225,16 @@ in
           dialogconfirm = "show";
           nativetheme = "dark";
           darkreader = true;
-          notificationforpermissions = "all";
+          darkreaderblocklist = builtins.toJSON
+            [
+              "piguman3"
+            ];
+          notificationforpermissions = "blocked";
           permissionhid = "allow";
+          permissionsallowed = builtins.toJSON
+            [
+              ".*chat.openai\.com.*~mediadevices"
+            ];
           useragent = "%default";
           userscript = true;
           userstyle = true;
