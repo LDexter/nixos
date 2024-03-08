@@ -241,34 +241,39 @@ in
           vimcommand = ''"emacsclient -c"'';
           favoritepages = builtins.toJSON
             [
-              "github.com"
               "youtube.com"
               "myanimelist.net"
+              "chat.openai.com"
+              "wiki.hyprland.org"
+              "github.com/Alexays/Waybar/wiki"
+              "github.com/LDexter/nixos"
               "nixos.org/manual/nix/stable/language"
               "nix-community.github.io/home-manager/options.xhtml"
+              "mail.google.com"
               "thevirt.ru"
             ];
           
           searchwords = builtins.toJSON
             {
               # Standard search
-              w = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go&ns0=1";
-              aw = "https://wiki.archlinux.org/?search=%s";
-              nw = "https://nixos.wiki/index.php?search=%s";
-              nr = "https://nixos.org/manual/nix/stable/language/?search=%s";
-              np = "https://search.nixos.org/packages?channel=23.05&from=0&size=50&sort=relevance&type=packages&query=%s";
-              gh = "https://github.com/search?q=%s";
-              yt = "https://www.youtube.com/results?search_query=%s";
-              ya = "https://yandex.com/images/search?text=%s";
-              mal = "https://myanimelist.net/search/all?q=%s&cat=all";
+              w = "en.wikipedia.org/wiki/Special:Search?search=%s&go=Go&ns0=1";
+              aw = "wiki.archlinux.org/?search=%s";
+              nw = "nixos.wiki/index.php?search=%s";
+              nr = "nixos.org/manual/nix/stable/language/?search=%s";
+              np = "search.nixos.org/packages?channel=23.11&from=0&size=50&sort=relevance&type=packages&query=%s";
+              gh = "github.com/search?q=%s";
+              ghu = "github.com/search?q=%s&type=users";
+              yt = "youtube.com/results?search_query=%s";
+              ya = "yandex.com/images/search?text=%s";
+              mal = "myanimelist.net/search/all?q=%s&cat=all";
               imdb = "imdb.com/find?q=%s";
               
               # Japanese/English
-              jpen = "https://www.deepl.com/translator#ja/en/%s";
-              enjp = "https://www.deepl.com/translator#en/ja/%s";
+              jpen = "deepl.com/translator#ja/en/%s";
+              enjp = "deepl.com/translator#en/ja/%s";
               # Russian/English
-              ruen = "https://www.deepl.com/translator#ru/en/%s";
-              enru = "https://www.deepl.com/translator#en/ru/%s";
+              ruen = "deepl.com/translator#ru/en/%s";
+              enru = "deepl.com/translator#en/ru/%s";
             };
           
         } ++ map (x: "unmap ${x}") [
