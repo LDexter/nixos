@@ -166,9 +166,6 @@ in
     # CLI for the Quantum Mechanical Keyboard firmware
     qmk
     gnumake
-
-    # Console copy
-    xclip
     
     # Rust
     rustup
@@ -604,7 +601,37 @@ in
       discordAlias = false;
       discordPackage = pkgs.vesktop;
     };*/
-
+    
+    # Speedy fast app launcher
+    fuzzel = {
+      enable = true;
+      settings = {
+        main = {
+          icons-enabled = "no";
+          dpi-aware = "no";
+          width = 40;
+          font = "Hack:weight=bold:size=13";
+          line-height = 22;
+          fields = "name,generic,comment,categories,filename,keywords";
+          terminal = "${pkgs.kitty}/bin/kitty";
+          layer = "overlay";
+        };
+        colors = {
+          background = "B55088FA";
+          text = "FFFFFFFF";
+          match = "FFAFFFFF";
+          selection = "007F7FFF";
+          selection-text = "99CCCCFF";
+          selection-match = "004C4CFF";
+          border = "FFAFFFFF";
+        };
+        border = {
+          width = 4;
+          radius = 0;
+        };
+      };
+    };
+    
     # Hyprland wallpaper
     wpaperd = {
       enable = true;
@@ -737,6 +764,8 @@ in
     startWithUserSession = "graphical";
   };
 
+  services.cliphist.enable = true;
+
   services.mpd-discord-rpc = {
     enable = true;
     settings = {
@@ -784,6 +813,9 @@ in
       exec-once = kitty
       exec-once = dunst
 
+      exec-once = wl-paste --type text --watch cliphist store #Stores only text data
+      exec-once = wl-paste --type image --watch cliphist store #Stores only image data
+
       env = LIBVA_DRIVER_NAME, nvidia
       env = XDG_SESSION_TYPE, wayland
       env = GBM_BACKEND, nvidia-drm
@@ -817,8 +849,12 @@ in
           "$mod, Q, killactive"
           "$mod, Tab, cyclenext"
           "$mod, F, fullscreen, 0"
+
+          # Copying
           "$mod, S, exec, grimblast --cursor copy output"
           "$mod SHIFT, S, exec, grimblast copy area"
+          "$mod, P, exec, hyprpicker -n -a"
+          "$mod, V, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
 
           # Workspace motions
           "$mod, Y, movewindow, l"
@@ -828,9 +864,9 @@ in
 
           # Program specific actions
           "$mod, Return, exec, kitty"
+          "$mod, Space, exec, fuzzel"
           "$mod, H, exec, emacsclient --create-frame ~/nixos/home-manager/home.nix"
-          "$mod, V, exec, vieb"
-          "$mod, P, exec, hyprpicker -n -a"
+          "$mod, B, exec, vieb"
         ]
         ++ (
           # Workspaces
