@@ -247,7 +247,7 @@ in
               "nixos.org/manual/nix/stable/language"
               "nix-community.github.io/home-manager/options.xhtml"
               "mail.google.com"
-              "thevirt.ru"
+              "amazon.com.au"
             ];
           
           searchwords = builtins.toJSON
@@ -262,6 +262,8 @@ in
               ghu = "github.com/search?q=%s&type=users";
               yt = "youtube.com/results?search_query=%s";
               ya = "yandex.com/images/search?text=%s";
+              az = "amazon.com.au/s?k=%s";
+              tp = "thinkwiki.org/w/index.php?search=%s&title=Special%3ASearch&go=Go";
               mal = "myanimelist.net/search/all?q=%s&cat=all";
               imdb = "imdb.com/find?q=%s";
               
@@ -609,7 +611,7 @@ in
         main = {
           icons-enabled = "no";
           dpi-aware = "no";
-          width = 40;
+          width = 30;
           font = "Hack:weight=bold:size=13";
           line-height = 22;
           fields = "name,generic,comment,categories,filename,keywords";
@@ -783,7 +785,7 @@ in
         follow = "mouse";
         width = 300;
         height = 300;
-        offset = "44x50";
+        offset = "44x49";
         origin = "top-right";
         progress_bar = true;
         progress_bar_height = 20;
