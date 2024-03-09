@@ -177,26 +177,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
-
-
-  # WIREGUARD SETUP
-  networking.wg-quick.interfaces = {
-    wg0 = {
-      autostart = false;
-      address = [ "10.66.66.3/32" "fd42:42:42::3/128" ];
-      dns = [ "1.1.1.1" "1.0.0.1" ];
-      privateKeyFile = "/home/bano/wg/.wgprivkey";
-
-      peers = [{
-        publicKey = "DJOd3EDp7iB8k6mLiS3S67pVzlzmdvv9fRuHzzy/fXE=";
-        presharedKeyFile = "/home/bano/wg/.wgpresharedkey";
-        endpoint = "194.226.49.153:50868";
-        allowedIPs = [ "10.66.66.0/24" ];
-      }];
-    };
-  };
-  
+  system.stateVersion = "23.05"; # Did you read the comment? 
 
   # Drivers
   hardware.opengl.enable = true;
