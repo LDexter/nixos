@@ -104,7 +104,7 @@ in
     tor
 
     # Ultimate funny of funnies
-    neo-cowsay
+    charasay
 
     # OpenGL debugging
     glxinfo
