@@ -239,6 +239,7 @@ in
           vimcommand = ''"emacsclient -c"'';
           favoritepages = builtins.toJSON
             [
+              "graincult.com"
               "youtube.com"
               "myanimelist.net"
               "chat.openai.com"
