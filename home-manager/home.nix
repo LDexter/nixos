@@ -225,6 +225,7 @@ in
           darkreaderblocklist = builtins.toJSON
             [
               "piguman3"
+              "cerakey"
             ];
           notificationforpermissions = "blocked";
           permissionhid = "allow";
@@ -248,6 +249,7 @@ in
               "nix-community.github.io/home-manager/options.xhtml"
               "mail.google.com"
               "amazon.com.au"
+              "codecademy.com"
             ];
           
           searchwords = builtins.toJSON
@@ -362,6 +364,8 @@ in
           "nunmap ys"               # unmap <p.copyText>
           "nunmap yt"               # unmap <pageTitleToClipboard>
           "nunmap yy"               # unmap <pageToClipboard>
+          "nunmap F"                # unmap <startFollowNewTab>
+          "nunmap c"                # unmap <p.start>
 
           # Pointer Mode
           "punmap oa"               # unmap <p.openAudio>
@@ -439,6 +443,9 @@ in
 
       # Discord RPC restart - until I figure out ZSH scripting
       rpc="systemctl --user restart mpd-discord-rpc";
+
+      # Easier running of python scripts
+      py="python";
     };
 
     # More advanced Z shell scripts - WIP
@@ -756,7 +763,7 @@ in
   # Ensuring gpg has access to pinentry
   services.gpg-agent = {
     enable = true;
-    pinentryFlavor = "qt";
+    pinentryPackage = pkgs.pinentry-qt;
   };
 
   # For running Emacs as daemon
@@ -867,6 +874,7 @@ in
           # Program specific actions
           "$mod, Return, exec, kitty"
           "$mod, Space, exec, fuzzel"
+          "$mod, D, exec, vesktop"
           "$mod, H, exec, emacsclient --create-frame ~/nixos/home-manager/home.nix"
           "$mod, B, exec, vieb"
         ]
