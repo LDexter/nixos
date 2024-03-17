@@ -173,6 +173,9 @@ in
     trunk
     gcc
 
+    # "fastest text uwuifier in the west"
+    uwuify
+    
     # Hyprland utilities
     grim
     slurp
