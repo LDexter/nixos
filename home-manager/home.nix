@@ -327,6 +327,7 @@ in
           "p" = "<p.start>";                       # v sub (a little phonetics balance for messing with e)
           "v" = "<openFromClipboard>";             # p sub
           "V" = "<:tabnew><openFromClipboard>";    # P sub
+          "I" = "<toInsertMode>";                       # Insert while capslock
         } ++ mapAttrsToList (n: v:
           # Pointer Mode
           "pmap ${n} ${v}"
@@ -355,7 +356,6 @@ in
           "ct" = "<p.copyTitleAttr>";              # yt sub
           "cv" = "<p.copyVideo>";                  # yv sub
           "cy" = "<p.copyLink>";                   # yy sub
-          
         } ++ [  # Unmapping
           # Normal Mode
           "nunmap yR<Any>"          # unmap <pageRSSLinkToClipboard>
