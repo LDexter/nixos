@@ -599,7 +599,7 @@ in
     tmux.enable = true;
 
     # Best software in existence
-    thefuck.enable = true;
+    #thefuck.enable = true;    - Disabled due to failed tests 23/03/24
 
     # Simple image viewing!
     feh.enable = true;
