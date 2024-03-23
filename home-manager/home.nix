@@ -229,6 +229,7 @@ in
             [
               "piguman3"
               "cerakey"
+              "rust-lang"
             ];
           notificationforpermissions = "blocked";
           permissionhid = "allow";
@@ -249,6 +250,8 @@ in
               "wiki.hyprland.org"
               "github.com/Alexays/Waybar/wiki"
               "github.com/LDexter/nixos"
+              "https://doc.rust-lang.org/book"
+              "ratatui.rs"
               "nixos.org/manual/nix/stable/language"
               "nix-community.github.io/home-manager/options.xhtml"
               "mail.google.com"
@@ -272,6 +275,10 @@ in
               tp = "thinkwiki.org/w/index.php?search=%s&title=Special%3ASearch&go=Go";
               mal = "myanimelist.net/search/all?q=%s&cat=all";
               imdb = "imdb.com/find?q=%s";
+
+              # Development docs
+              rs = "doc.rust-lang.org/book/?search=%s";
+              rat = "docs.rs/ratatui/latest/ratatui/?search=%s";
               
               # Japanese/English
               jpen = "deepl.com/translator#ja/en/%s";
