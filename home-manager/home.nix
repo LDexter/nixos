@@ -112,8 +112,9 @@ in
     # The frontend in me needs this
     eyedropper
 
-    # Better Gimp
+    # Open source Adobe, ig
     krita
+    inkscape
 
     # Mmmmm rainbows
     lolcat
@@ -422,7 +423,9 @@ in
     bash.enable = true;
     bash.shellAliases = {
       # NixOwOs setup
-      neofetch="neofetch --ascii /home/bano/nixos/home-manager/NixOwOs.txt --ascii_colors 4 5";
+      #neofetch="neofetch --ascii /home/bano/nixos/home-manager/NixOwOs.txt --ascii_colors 4 5";
+      # GrainOS test
+      neofetch="neofetch --ascii /home/bano/nixos/home-manager/GrainOS.txt --ascii_colors 3";
 
       # Shutdown and reboot
       sd="shutdown now";
