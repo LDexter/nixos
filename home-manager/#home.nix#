@@ -176,9 +176,6 @@ in
 
     # "fastest text uwuifier in the west"
     uwuify
-
-    # "Professional Editing, Color, Effects and Audio Post!"
-    davinci-resolve
     
     # Hyprland utilities
     grim
@@ -194,6 +191,7 @@ in
     inputs.hyprland-contrib.packages.${pkgs.system}.shellevents
     inputs.hyprland-contrib.packages.${pkgs.system}.try_swap_workspace
     inputs.hyprland-contrib.packages.${pkgs.system}.scratchpad
+    inputs.hyprland-contrib.packages.${pkgs.system}.hdrop
   ];
   
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -687,9 +685,7 @@ in
       settings = {
         mainBar = {
           layer = "top";
-          position = "top";
-          height = 34;
-          output = [
+          position = "top"; height = 34; output = [
             "eDP-1"
             "HDMI-A-1"
             "DP-1"
