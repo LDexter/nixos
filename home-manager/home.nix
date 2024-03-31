@@ -179,6 +179,12 @@ in
 
     # "Professional Editing, Color, Effects and Audio Post!"
     davinci-resolve
+
+    # Make do until Davinci GPU issues fixed
+    libsForQt5.kdenlive
+
+    # Quick and easy audio
+    audacity
     
     # Hyprland utilities
     grim
