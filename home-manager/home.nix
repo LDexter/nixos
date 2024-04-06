@@ -177,8 +177,9 @@ in
     # "fastest text uwuifier in the west"
     uwuify
 
-    # VRChat avatar builder
+    # VRChat avatars
     unityhub
+    vrc-get
 
     # "Professional Editing, Color, Effects and Audio Post!"
     davinci-resolve
