@@ -180,6 +180,7 @@ in
     # VRChat avatars
     unityhub
     vrc-get
+    dotnetCorePackages.sdk_6_0_1xx
 
     # "Professional Editing, Color, Effects and Audio Post!"
     davinci-resolve
