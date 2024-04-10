@@ -177,11 +177,10 @@ in
     # "fastest text uwuifier in the west"
     uwuify
 
-    # VRChat avatars
+    # VR stuff
     unityhub
     vrc-get
-    dotnet-runtime
-    #dotnetCorePackages.sdk_6_0_1xx
+    alvr
 
     # "Professional Editing, Color, Effects and Audio Post!"
     davinci-resolve
