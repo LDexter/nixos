@@ -180,7 +180,7 @@ in
     # VR stuff
     unityhub
     vrc-get
-    alvr
+    opencomposite
 
     # "Professional Editing, Color, Effects and Audio Post!"
     davinci-resolve

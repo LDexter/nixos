@@ -76,6 +76,41 @@
     #media-session.enable = true;
   };
 
+  # VR setup
+  services = {
+    udev.packages = with pkgs; [
+      android-udev-rules
+    ];
+    wivrn = {
+      enable = true;
+      package = pkgs.unstable.callPackage ../../pkgs/wivrn { };
+      hardwarePackage = pkgs.unstable.xr-hardware;
+      openFirewall = true;
+      highPriority = true;
+      defaultRuntime = true;
+    };
+    steamvr = {
+      runtimeOverride = {
+        enable = true;
+        path = "${inputs.nixpkgs-xr.packages.${pkgs.system}.opencomposite}/lib/opencomposite";
+      };
+      activeRuntimeOverride = {
+        enable = true;
+        path = "${wivrn}/share/openxr/1/openxr_wivrn.json";
+      };
+    };
+  };
+
+  programs = {
+    steam.enable = true
+    adb.enable = true;
+    alvr = { # Module of lemonake
+      enable = true;
+      package = inputs.lemonake.packages.${pkgs.system}.alvr;
+      openFirewall = true;
+    };
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
