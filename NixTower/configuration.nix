@@ -98,7 +98,7 @@
     steam.enable = true;
     adb.enable = true;
     alvr = { # Module of lemonake
-      enable = true;
+      #enable = true;
       package = inputs.lemonake.packages.${pkgs.system}.alvr;
       openFirewall = true;
     };

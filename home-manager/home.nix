@@ -3,7 +3,7 @@
 let
   inherit (builtins) concatStringsSep isBool;
   inherit (lib) mkOption types escapeShellArg mapAttrsToList mapAttrs' nameValuePair;
-  wivrn = pkgs.callPackage ../../pkgs/wivrn { };
+  wivrn = pkgs.callPackage ../../NixTower/pkgs/wivrn { };
 in
 
 {
