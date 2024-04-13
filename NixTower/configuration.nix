@@ -2,13 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, upkgs, ... }:
+{ config, lib, pkgs, upkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./upkgs.nix
+
+      # VR imports
+      inputs.lemonake.nixosModules.alvr
+      ./wivrn.nix
     ];
 
   # Bootloader.
@@ -83,26 +87,15 @@
     ];
     wivrn = {
       enable = true;
-      package = pkgs.unstable.callPackage ../../pkgs/wivrn { };
-      hardwarePackage = pkgs.unstable.xr-hardware;
+      package = pkgs.unstable.callPackage ../pkgs/wivrn { };
       openFirewall = true;
       highPriority = true;
       defaultRuntime = true;
     };
-    steamvr = {
-      runtimeOverride = {
-        enable = true;
-        path = "${inputs.nixpkgs-xr.packages.${pkgs.system}.opencomposite}/lib/opencomposite";
-      };
-      activeRuntimeOverride = {
-        enable = true;
-        path = "${wivrn}/share/openxr/1/openxr_wivrn.json";
-      };
-    };
   };
 
   programs = {
-    steam.enable = true
+    steam.enable = true;
     adb.enable = true;
     alvr = { # Module of lemonake
       enable = true;

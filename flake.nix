@@ -1,5 +1,17 @@
 {
-  inputs.flaksie.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+  inputs = {
+    flaksie.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    
+    nixpkgs-xr = {
+      url = "github:nix-community/nixpkgs-xr";
+      inputs.nixpkgs.follows = "flaksie";
+    };
+    
+    lemonake = {
+      url = "github:passivelemon/lemonake";
+      inputs.nixpkgs.follows = "flaksie";
+    };
+  };
   outputs = inputs @ {flaksie, ...}: {
 
     nixosConfigurations = {

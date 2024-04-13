@@ -3,9 +3,14 @@
 let
   inherit (builtins) concatStringsSep isBool;
   inherit (lib) mkOption types escapeShellArg mapAttrsToList mapAttrs' nameValuePair;
+  wivrn = pkgs.callPackage ../../pkgs/wivrn { };
 in
 
-{ 
+{
+  imports = [
+    inputs.lemonake.homeManagerModules.steamvr
+  ];
+  
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "bano";
@@ -637,7 +642,19 @@ in
       discordAlias = false;
       discordPackage = pkgs.vesktop;
     };*/
-    
+
+    # SteamVR from PassiveLemon
+    steamvr = {
+      runtimeOverride = {
+        enable = true;
+        path = "${inputs.nixpkgs-xr.packages.${pkgs.system}.opencomposite}/lib/opencomposite";
+      };
+      activeRuntimeOverride = {
+        enable = true;
+        path = "${wivrn}/share/openxr/1/openxr_wivrn.json";
+      };
+    };
+
     # Speedy fast app launcher
     fuzzel = {
       enable = true;

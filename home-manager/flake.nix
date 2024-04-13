@@ -13,6 +13,11 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lemonake = {
+      url = "github:passivelemon/lemonake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }:
