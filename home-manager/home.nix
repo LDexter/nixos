@@ -643,15 +643,6 @@ in
       discordPackage = pkgs.vesktop;
     };*/
 
-    # SteamVR from PassiveLemon
-    steamvr = {
-      runtimeOverride = {
-        enable = true;
-        package = pkgs.opencomposite;
-        path = "/lib/opencomposite";
-      };
-    };
-
     # Speedy fast app launcher
     fuzzel = {
       enable = true;
@@ -823,6 +814,14 @@ in
         details = "Weebing to $title";
         state = "By $artist, from $album";
       };
+    };
+  };
+
+  # SteamVR from PassiveLemon
+  services.steamvr = {
+    runtimeOverride = {
+      enable = true;
+      path = "${pkgs.opencomposite}/lib/opencomposite";
     };
   };
 
