@@ -3,12 +3,12 @@
 let
   inherit (builtins) concatStringsSep isBool;
   inherit (lib) mkOption types escapeShellArg mapAttrsToList mapAttrs' nameValuePair;
-  wivrn = pkgs.callPackage ../../NixTower/pkgs/wivrn { };
+  wivrn = pkgs.callPackage ../pkgs/wivrn { };
 in
 
 {
   imports = [
-    inputs.lemonake.homeManagerModules.steamvr
+    ./steamvr.nix
   ];
   
   # Home Manager needs a bit of information about you and the paths it should

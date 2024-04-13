@@ -82,7 +82,7 @@ in
     };
 
     services = {
-      udev.packages = with pkgs; [ unstable.xr-hardware ];
+      udev.packages = with pkgs; [ xr-hardware ];
       avahi = {
         enable = true;
         publish = {

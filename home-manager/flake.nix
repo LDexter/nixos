@@ -18,6 +18,11 @@
       url = "github:passivelemon/lemonake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs-xr = {
+      url = "github:nix-community/nixpkgs-xr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }:

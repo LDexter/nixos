@@ -7,10 +7,10 @@
       inputs.nixpkgs.follows = "flaksie";
     };
     
-    lemonake = {
-      url = "github:passivelemon/lemonake";
-      inputs.nixpkgs.follows = "flaksie";
-    };
+    #lemonake = {
+    #  url = "github:passivelemon/lemonake";
+    #  inputs.nixpkgs.follows = "flaksie";
+    #};
   };
   outputs = inputs @ {flaksie, ...}: {
 

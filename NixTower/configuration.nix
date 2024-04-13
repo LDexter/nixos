@@ -11,7 +11,6 @@
       ./upkgs.nix
 
       # VR imports
-      inputs.lemonake.nixosModules.alvr
       ./wivrn.nix
     ];
 
@@ -87,7 +86,7 @@
     ];
     wivrn = {
       enable = true;
-      package = pkgs.unstable.callPackage ../pkgs/wivrn { };
+      package = pkgs.callPackage ../pkgs/wivrn { };
       openFirewall = true;
       highPriority = true;
       defaultRuntime = true;
@@ -98,8 +97,8 @@
     steam.enable = true;
     adb.enable = true;
     alvr = { # Module of lemonake
-      #enable = true;
-      package = inputs.lemonake.packages.${pkgs.system}.alvr;
+      enable = true;
+      #package = inputs.lemonake.packages.${pkgs.system}.alvr;
       openFirewall = true;
     };
   };
