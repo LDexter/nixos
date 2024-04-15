@@ -187,6 +187,9 @@ in
     vrc-get
     opencomposite
 
+    # ISO burner, because cp is just kinda wild
+    ventoy
+
     # "Professional Editing, Color, Effects and Audio Post!"
     davinci-resolve
 
