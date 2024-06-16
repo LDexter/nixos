@@ -36,7 +36,7 @@ in
 
   # When some Electron app devs are too stubborn for an update
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
+    "electron-28.3.1"
   ];
 
   # Ensuring cursor theme loads in Hyprland
